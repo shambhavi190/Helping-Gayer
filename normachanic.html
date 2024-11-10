@@ -1,0 +1,406 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Mezan - Home and Business Installation Services
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            background-color: #f7b600;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+        }
+        header .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+        }
+        header nav {
+            display: flex;
+            align-items: center;
+        }
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+        }
+        header .contact-info {
+            color: #fff;
+            font-weight: 500;
+        }
+        header .contact-info i {
+            margin-right: 5px;
+        }
+        header .cta {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .hero {
+            background: url('360_F_811410963_JQsA0yHtJfNiLLsFEza7HUUqiNx8luPs.jpg') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 100px 0;
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        .hero .cta {
+            background-color: #f7b600;
+            color: #000;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .services {
+            padding: 50px 0;
+            text-align: center;
+        }
+        .services h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .services p {
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+        .services .service-item {
+            display: inline-block;
+            width: 22%;
+            margin: 0 1%;
+            text-align: left;
+        }
+        .services .service-item img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .services .service-item h3 {
+            font-size: 24px;
+            margin: 15px 0;
+        }
+        .services .service-item p {
+            font-size: 16px;
+        }
+        .quote {
+            background-color: #f7f7f7;
+            padding: 50px 0;
+            text-align: center;
+        }
+        .quote h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .quote form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .quote form input, .quote form select {
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+        }
+        .quote form button {
+            background-color: #f7b600;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .why-us {
+            padding: 50px 0;
+            text-align: center;
+        }
+        .why-us h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .why-us .features {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .why-us .feature-item {
+            width: 22%;
+            margin: 0 1%;
+            text-align: left;
+        }
+        .why-us .feature-item i {
+            font-size: 36px;
+            color: #f7b600;
+            margin-bottom: 10px;
+        }
+        .why-us .feature-item h3 {
+            font-size: 24px;
+            margin: 15px 0;
+        }
+        .why-us .feature-item p {
+            font-size: 16px;
+        }
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 50px 0;
+            text-align: center;
+        }
+        footer p {
+            font-size: 16px;
+        }
+        .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #f7b600;
+    color: white;
+    
+    margin: auto;
+}
+
+.site-name {
+    font-family:ROBOTO (HEADING);
+    font-weight: bolder;
+    display: flex;
+    flex-direction: column;
+    font-size:23PX;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    font-family: "Lato", sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+
+}
+
+.nav-links li {
+    margin: 0 1.5rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff6347; /* Change color on hover */
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    height: 3px;
+    width: 25px;
+    background-color: white;
+    margin: 3px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide links initially */
+        flex-direction: column;
+        position: absolute;
+        background-color: black;
+        top: 60px; /* Position below the navbar */
+        right: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex; /* Show links when active */
+    }
+
+    .hamburger {
+        display: flex; /* Show hamburger icon */
+    }
+
+    .site-name {
+        font-size: 24px; /* Adjust font size for smaller screens */
+    }
+}
+  </style>
+ </head>
+ <body>
+    <nav class="navbar">
+        <div class="site-name">
+            <div>AUTOMOTIVE</div>
+            <div>CARE</div>
+        </div>
+        <ul class="nav-links">
+            
+            <li><a href="#">Product</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="login.html">login</a></li>
+        </ul>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+  <section class="hero">
+   <h1>
+    Honest, Trustworthy, And Does Good Work.
+   </h1>
+   <p>
+    Professional home and business installation services you can rely on.
+   </p>
+   <a class="cta" href="#">
+    Learn More
+   </a>
+  </section>
+  <section class="services">
+   <h2>
+    Home And Businesses Installation Services
+   </h2>
+   <p>
+    We offer a wide range of services to meet your needs.
+   </p>
+   <div class="service-item">
+    <img alt="Service Image 1" height="300" src="https://storage.googleapis.com/a1aa/image/mEgHtWgHtJqsCheKYwsWtfMS4Wuofh6ts3Dt76tklnJnXMOnA.jpg" width="400"/>
+    <h3>
+     Sanitary Plumbing
+    </h3>
+    <p>
+     Professional plumbing services for your home and business.
+    </p>
+   </div>
+   <div class="service-item">
+    <img alt="Service Image 2" height="300" src="https://storage.googleapis.com/a1aa/image/bzG6S5MlJ8pnEpntl1mbxUmZNto4EeAhwD1xjBMRzfqxLGnTA.jpg" width="400"/>
+    <h3>
+     Air Condition Installation
+    </h3>
+    <p>
+     Expert air conditioning installation and maintenance services.
+    </p>
+   </div>
+   <div class="service-item">
+    <img alt="Service Image 3" height="300" src="https://storage.googleapis.com/a1aa/image/StI4BihtZ8IJE9zrCmGaueSbSLFFeikmWB1r0qLXVHPwLGnTA.jpg" width="400"/>
+    <h3>
+     Cabinet Making
+    </h3>
+    <p>
+     Custom cabinet making services for your kitchen and home.
+    </p>
+   </div>
+   <div class="service-item">
+    <img alt="Service Image 4" height="300" src="https://storage.googleapis.com/a1aa/image/VYUK5utZzsKXJx4Pf8COQG9cCO8Nw8Ofv5sWbZkG2yS0LGnTA.jpg" width="400"/>
+    <h3>
+     Window Carpentry
+    </h3>
+    <p>
+     High-quality window carpentry services for your home.
+    </p>
+   </div>
+  </section>
+  <section class="quote">
+   <h2>
+    Request A Quote
+   </h2>
+   <form>
+    <input placeholder="Your Name" type="text"/>
+    <input placeholder="Your Email" type="email"/>
+    <input placeholder="Your Phone" type="text"/>
+    <select>
+     <option value="">
+      Select Service
+     </option>
+     <option value="plumbing">
+      Plumbing
+     </option>
+     <option value="air-condition">
+      Air Condition
+     </option>
+     <option value="cabinet-making">
+      Cabinet Making
+     </option>
+     <option value="window-carpentry">
+      Window Carpentry
+     </option>
+    </select>
+    <button type="submit">
+     Get Free Quote
+    </button>
+   </form>
+  </section>
+  <section class="why-us">
+   <h2>
+    Why We Are Best
+   </h2>
+   <div class="features">
+    <div class="feature-item">
+     <i class="fas fa-tools">
+     </i>
+     <h3>
+      Licensed Technicians
+     </h3>
+     <p>
+      Our technicians are fully licensed and insured.
+     </p>
+    </div>
+    <div class="feature-item">
+     <i class="fas fa-star">
+     </i>
+     <h3>
+      Top Rated Service
+     </h3>
+     <p>
+      We are top-rated by our customers for our quality service.
+     </p>
+    </div>
+    <div class="feature-item">
+     <i class="fas fa-clock">
+     </i>
+     <h3>
+      Timely Services
+     </h3>
+     <p>
+      We provide timely services to meet your needs.
+     </p>
+    </div>
+   </div>
+  </section>
+  <footer>
+   <p>
+    © 2023 Mezan. All rights reserved.
+   </p>
+  </footer>
+ </body>
+</html>

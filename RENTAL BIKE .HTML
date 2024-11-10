@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Bike Rentals - Daily Basis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #000;
+}
+
+           
+        
+    .back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #333;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.back-button i {
+    margin-right: 8px;
+}
+
+.back-button:hover {
+    background-color: #555;
+}
+
+
+        
+        .popup-overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* Popup Content */
+        .popup-content {
+            background: hwb(0 93% 7%);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+        }
+
+        .popup-content h2 {
+            margin-bottom: 20px;
+        }
+
+        .popup-content input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .popup-content button {
+            background-color: #ff6f61;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .popup-content .close-btn {
+            background-color: #ccc;
+        }
+
+
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            
+    
+        }
+        .ww{
+            font-size: 32px;
+        }
+        
+        header {
+            background-color: rgb(1,58,99);
+            color: white;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center; /* Center align horizontally */
+            align-items: center;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1200px; /* Adjust as needed */
+            padding: 0 20px;
+        }
+
+        header .logo {
+            flex: 1;
+            text-align: center; /* Center align text */
+        }
+
+        header .logo h1 {
+            
+            margin: 0;
+        }
+
+        header nav {
+            
+            flex: 1;
+            display: flex;
+            justify-content: center; /* Center align navigation links */
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        header nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        header nav ul li a {
+            color: #ff3f3f;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-image: url(harley-davidson-2S4FDh3AtGw-unsplash.jpg); 
+            background-size: cover;
+            background-position: center;
+            box-shadow: 4 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero h2 {
+            position: relative;
+            text-align: left;
+            margin-left: 3px;
+            font-size:55px;
+            margin-bottom: 1px;
+            color: white;
+        }
+
+        .hero h4 {
+            text-align: left;
+            font-size: 24px;
+            margin-bottom: 310px;
+            color: white;
+        }
+
+        /* Bike Listings Section */
+        .bike-listings {
+            padding: 20px 0;
+            background-color: hsl(205, 100%, 96%);
+        }
+
+        .bike-listings h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .bike-card {
+            background-color:  #e2f1fc;
+            border-radius: 10px;
+            box-shadow: 1px 4px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            width: calc(33.333% - 20px);
+            float: left;
+            margin-right: 20px;
+        }
+
+        .bike-card img {
+            width: 100%;
+            height:300px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .bike-card h3 {
+            margin: 15px 0 10px;
+        }
+
+        .bike-card p {
+            margin-bottom: 10px;
+        }
+
+        .bike-card .price {
+            font-size: 20px;
+            color: #ff6f61;
+            margin-bottom: 15px;
+        }
+
+        .bike-card .btn {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 40px 0;
+            background: hsl(205, 100%, 82%);
+            text-align: center;
+            clear: both;
+        }
+
+        .how-it-works h2 {
+            margin-bottom: 30px;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .step {
+            width: 30%;
+        }
+
+        .step h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .step p {
+            font-size: 16px;
+        }
+
+        /* Footer Section */
+        footer{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    color: white;
+    background-color:#1e567e;
+    margin: auto;
+}
+.foothead{
+    font-size: 56px;
+    font-style: var(--style);
+     font-weight: 700;
+     padding: 15px;
+     margin-left: 32px;
+}
+.address{
+    max-width: 30vw;
+    font-size:20px;
+    font-style: var(--style2);
+    font-weight: 400;
+    padding: 15px;
+     margin-left: 32px;
+}
+.footer2{
+    max-width: 30vw;
+    font-size:22px;
+    font-style: var(--style2);
+    font-weight: 500;
+    padding: 25px;
+   
+}
+.footer2 li{
+    list-style: none;
+    margin: 15px;
+}
+.footer2 li a{
+    text-decoration: none;
+    color: white;}
+.footer3{
+    max-width: 30vw;
+    font-size:22px;
+    font-style: var(--style2);
+    font-weight: 500;
+    padding: 25px;
+   
+}
+.footer3 li {
+    list-style: none;
+    margin: 15px;
+}
+.footer3 li a{
+    text-decoration: none;
+    color: white;
+}
+.list{
+    margin: 15px;
+
+}
+.social-icons {
+    display: flex;
+    margin-top: 15px;
+    margin-right: 15px;
+}
+
+.social-icons a {
+   margin-left: 54px;
+   margin-bottom: 12px;
+}
+
+.social-icons img {
+    width: 32px;
+    height: 32px;
+}
+@media (max-width:900px){
+    footer{
+        display: flex;
+        flex-direction: column;
+        justify-content:flex-start;
+        align-items: flex-start;
+    }
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: rgb(1,58,99);
+    color: white;
+    
+    margin: auto;
+}
+
+.site-name {
+    font-family:ROBOTO (HEADING);
+    font-weight: bolder;
+    display: flex;
+    flex-direction: column;
+    font-size:23PX;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    font-family: "Lato", sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+
+}
+
+.nav-links li {
+    margin: 0 1.5rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff6347; /* Change color on hover */
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    height: 3px;
+    width: 25px;
+    background-color: white;
+    margin: 3px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide links initially */
+        flex-direction: column;
+        position: absolute;
+        background-color: black;
+        top: 60px; /* Position below the navbar */
+        right: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex; /* Show links when active */
+    }
+
+    .hamburger {
+        display: flex; /* Show hamburger icon */
+    }
+
+    .site-name {
+        font-size: 24px; /* Adjust font size for smaller screens */
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <nav class="navbar">
+        <div class="nav-links">
+            <div>
+                <a href="front.html">
+                AUTOMOTIVE <br> CARE</div>
+        </a>
+        </div>
+        <ul class="nav-links">
+            
+            <li><a href="accessorise car.html">Product</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Mico Free Website Template - Free-CSS.com/mico-html/contact.html">Contact</a></li>
+            <li><a href="login.html">login</a></li>
+        </ul>
+        <div class="hamburger">
+            <span>38787</span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Rent Your Dream Bike Today!</h2>
+            <h4>Choose from a wide range of Indian bikes available <br> for daily rental.</h4>
+        </div>
+    </section>
+
+    <section id="bikes" class="bike-listings">
+        <div class="container">
+            <div class="ww">
+            <h2>Available Bikes for Rent</h2>
+        </div>
+            <!-- Bike 1 -->
+            <div class="bike-card">
+                <img src="42b6422ab24ce541a38962d6d408b38f.jpg" alt="KTM 1290 Super Duke R">
+                <h3>KTM 1290 Super Duke R</h3>
+                <p>A beastly hyper-naked bike with extreme performance.</p>
+                <p class="price">₹2,500 per day</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+    
+            <!-- Bike 2 -->
+            <div class="bike-card">
+                <img src="duke-390-pictures-3bjo1udbya2vvlyy.jpg" alt="KTM Duke 390">
+                <h3>KTM Duke 390</h3>
+                <p>A sporty and performance-oriented street bike.</p>
+                <p class="price">₹1,800 per day</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+    
+            <!-- Bike 3 -->
+            <div class="bike-card">
+                <img src="Royal_enfied_HIMALAYAN.jpg" alt="Royal Enfield Himalayan">
+                <h3>Royal Enfield Himalayan</h3>
+                <p>A rugged adventure bike perfect for long journeys.</p>
+                <p class="price">₹1,500 per day</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+    
+            <!-- Bike 4 -->
+            <div class="bike-card">
+                <img src="duke-200-right-front-three-quarter.webp" alt="KTM Duke 200">
+                <h3>KTM Duke 200</h3>
+                <p>A nimble and lightweight bike for urban rides.</p>
+                <p class="price">₹1,500 per day</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+    
+            <!-- Bike 5 -->
+            <div class="bike-card">
+                <img src="2022-Yamaha-YZF-R15---11400-kms-driven-in-Mulund-West-VB201705171774173-ak_LWBP1713171691-1722785917_lg.png" alt="Yamaha YZF R15 V3">
+                <h3>Yamaha YZF R15 V3</h3>
+                <p>A sleek and sporty bike with track-inspired performance</p>
+                <p class="price">₹1,300 per day</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+    
+            <!-- Bike 6 -->
+            <div class="bike-card">
+                <img src="WhatsApp-Image-2022-11-03-at-6.13.29-PM-2.jpeg" alt="Royal Enfield Classic 350">
+                <h3>Royal Enfield Classic 350</h3>
+                <p>A timeless cruiser with a retro design and a powerful engine</p>
+                <p class="price">₹1,200 per day</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+    
+            <!-- Bike 7 -->
+            <div class="bike-card">
+                <img src="2023-Royal-Enfield-Bullet-350-black-standard.jpg.webp" alt="Royal Enfield Bullet 350">
+                <h3>Royal Enfield Bullet 350</h3>
+                <p>A legendary cruiser known for its classic design .</p>
+                <p class="price">₹1,000 per day</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+    
+            <!-- Bike 8 -->
+            <div class="bike-card">
+                <img src="bajaj-avenger-cruise-220-8-1716793993.avif" alt="Bajaj Avenger Cruise 220">
+                <h3>Bajaj Avenger Cruise 220</h3>
+                <p>A comfortable cruiser bike, perfect for long rides.</p>
+                <p class="price">₹900 per day</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+    
+            <!-- Bike 9 -->
+            <div class="bike-card">
+                <img src="Honda-CB-Hornet-160R-6-1200x900.jpg" alt="Honda CB Hornet 160R">
+                <h3>Honda CB Hornet 160R</h3>
+                <p>A stylish streetfighter with a powerful engine.</p>
+                <p class="price">₹850 per day</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+    
+            <!-- Bike 10 -->
+            <div class="bike-card">
+                <img src="suzuki-motorcycle-launches-new-155cc-gixxer-with-abs-at-rs-1-lakh.webp" alt="Suzuki Gixxer">
+                <h3>Suzuki Gixxer</h3>
+                <p>A dynamic bike with sporty styling and performance.</p>
+                <p class="price">₹800 per day</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+    
+            <!-- Bike 11 -->
+            <div class="bike-card">
+                <img src="fz.jpg" alt="Yamaha FZ">
+                <h3>Yamaha FZ</h3>
+                <p>A stylish and muscular street bike with a comfortable ride.</p>
+                <p class="price">₹700 per day</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+    
+            <!-- Bike 12 -->
+            <div class="bike-card">
+                <img src="rtr.png" alt="TVS Apache RTR 160">
+                <h3>TVS Apache RTR 160</h3>
+                <p>A race-inspired performance bike with aggressive styling.</p>
+                <p class="price">₹750 per day</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+    
+            <!-- Bike 13 -->
+            <div class="bike-card">
+                <img src="bajaj-pulsar-150-bs6-launch-price.jpg" alt="Bajaj Pulsar 150">
+                <h3>Bajaj Pulsar 150</h3>
+                <p>A powerful and popular bike for daily commutes.</p>
+                <p class="price">₹600 per day</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+    
+            <!-- Bike 14 -->
+            <div class="bike-card">
+                <img src="Hero_Splendor_Plus_i3s_All_Black_Edition_and_IBS_2023_model_Non-_Xtec_PGM_FI_Model.png" alt="Hero Splendor">
+                <h3>Hero Splendor</h3>
+                <p>A reliable and fuel-efficient commuter bike.</p>
+                <p class="price">₹500 per day</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+    
+            <!-- Bike 15 -->
+            <div class="bike-card">
+                <img src="small_10001_9db7999b55.webp" alt="Honda Activa">
+                <h3>Honda Activa</h3>
+                <p>A smooth and reliable scooter, perfect for city rides.</p>
+                <p class="price">₹400 per day</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <h3>1. Choose Your Bike</h3>
+                    <p>Browse through our selection of bikes and choose the one that fits your needs.</p>
+                </div>
+                <div class="step">
+                    <h3>2. Book Online</h3>
+                    <p>Reserve your bike online by providing necessary details and making the payment.</p>
+                </div>
+                <div class="step">
+                    <h3>3. Enjoy Your Ride</h3>
+                    <p>Pick up your bike from the designated location and enjoy your ride!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer1">
+            <div class="foothead">AUTOMOTIVE <br>
+                CARE </div>
+                <div class="address">Address: <br>
+
+                    Microtek College of Management & Technology
+                    
+                    C-27/279, A-2, Lahurabir Rd, Maldahiya, Sidhgiribagh, Varanasi, Uttar
+                    Pradesh 221001</div>
+                </p>
+                <div class="social-icons">
+                    <a href="#"><img src="assest/image/face.png" alt="Facebook"></a>
+                    <a href="#"><img src="assest/image/insta.png" alt="Instagram"></a>
+                    <a href="#"><img src="assest/image/x.png" alt="Twitter"></a>
+                    <a href="#"><img src="assest/image/you.png" alt="YouTube"></a>
+                </div>
+        </div>
+        <div class="footer2">
+            <ul class="list">About</ul>
+            <li><a href="#">Mission & Vision</a></li>
+
+        <li><a href="#"> Our Journey</li>
+                
+               <li><a href="#"> Our Team</li>
+                
+               <li><a href="#"> Achievements</a></li>
+        </div>
+        <div class="footer3">
+
+            <ul class="list">Resource</ul>
+            
+        <li><a href="#">Contact us</a></li>
+                
+               <li><a href="#">FAQS</a> </li>
+                
+                <li><a href="#"> Term and Condition</a></li>
+        </div>
+    </footer>
+
+
+   
+    <div class="popup-overlay" id="bookingPopup">
+        <div class="popup-content">
+            <h2>Book Your Bike</h2>
+            <input type="text" id="bikeName" placeholder="Bike Name" readonly>
+            <input type="text" id="name" placeholder="Your Name">
+            <input type="email" id="email" placeholder="Your Email">
+            <button onclick="submitBooking()">Submit</button>
+            <button class="close-btn" onclick="closePopup()">Close</button>
+        </div>
+    </div>
+
+    <script>
+         
+         <a href="javascript:history.back()" class="back-button">
+    <i class="fas fa-arrow-left"></i> Back
+</a>
+
+    
+        function openPopup(bikeName) {
+            document.getElementById('bikeName').value = bikeName;
+            document.getElementById('bookingPopup').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('bookingPopup').style.display = 'none';
+        }
+
+        function submitBooking() {
+            alert('Your booking has been submitted!');
+            closePopup();
+        }
+
+        // Attach event listeners to "Book Now" buttons
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+                const bikeName = this.closest('.bike-card').querySelector('h3').innerText;
+                openPopup(bikeName);
+            });
+        });
+    </script>
+</body>
+</html>

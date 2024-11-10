@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Car Rentals - Daily Basis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+        .back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+   
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.back-button i {
+    margin-right: 8px;
+}
+
+.back-button:hover {
+    background-color: hwb(210 43% 56%);
+}
+
+        /* Popup Overlay */
+.popup-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Popup Content */
+.popup-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+}
+
+.popup-content h2 {
+    margin-bottom: 20px;
+}
+
+.popup-content input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.popup-content button {
+    background-color: #ff6f61;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.popup-content .close-btn {
+    background-color: #ccc;
+}
+
+        .container {
+            
+            width: 90%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+       /* Header Section */
+       header {
+            background-color: rgb(1,58,99);
+            color: #ffffff;
+            padding: 10px 0;
+            position: relative;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            flex: 1;
+            text-align: left;
+        }
+
+        header .logo h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        header nav {
+            flex: 2;
+            text-align: right;
+        }
+
+        header nav ul {
+            list-style: none;
+        }
+
+        header nav ul li {
+            display: inline-block;
+            margin-left: 15px;
+        }
+
+        header nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        header nav ul li a:hover {
+            color: #ff6f61;
+        }
+
+
+/* Hero Section */
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 90vh;
+    display: flex;
+    
+    justify-content: center;
+  
+    background-image: url(andrew-pons-Os7C4iw2rDc-unsplash\ \(1\).jpg); 
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Transparent box styling */
+.hero-text-box {
+    background-color: rgba(0, 0, 0, 0.252); /* Semi-transparent black box */
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+    text-align: right;
+    margin-bottom: 390px;
+    margin-left: 405px;
+    
+}
+
+.hero h2 {
+    color: white;
+    font-size: 56px;
+    margin-bottom: 10px;
+}
+
+.hero h4 {
+    color: white;
+    font-size: 24px;
+   
+}
+
+.ww{
+            font-size: 32px;
+        }
+
+
+
+        /* Car Listings Section */
+        .car-listings {
+            padding: 20px 0;
+            background-color: hsl(205, 100%, 96%);
+        }
+
+        .car-listings h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .car-card {
+            background-color: hwb(206 91% 0%);
+            border-radius: 10px;
+            box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            width: calc(33.333% - 20px);
+            float: left;
+            margin-right: 20px;
+        }
+
+        .car-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .car-card h3 {
+            margin: 15px 0 10px;
+        }
+
+        .car-card p {
+            margin-bottom: 10px;
+        }
+
+        .car-card .price {
+            font-size: 20px;
+            color: #ff6f61;
+            margin-bottom: 15px;
+        }
+
+        .car-card .btn {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 40px 0;
+            background: hsl(205, 100%, 82%);
+            text-align: center;
+            clear: both;
+        }
+
+        .how-it-works h2 {
+            margin-bottom: 30px;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .step {
+            width: 30%;
+        }
+
+        .step h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .step p {
+            font-size: 16px;
+        }
+
+        /* Footer Section */
+        footer{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    color: white;
+    background-color:#1e567e;
+    margin: auto;
+}
+.foothead{
+    font-size: 56px;
+    font-style: var(--style);
+     font-weight: 700;
+     padding: 15px;
+     margin-left: 32px;
+}
+.address{
+    max-width: 30vw;
+    font-size:20px;
+    font-style: var(--style2);
+    font-weight: 400;
+    padding: 15px;
+     margin-left: 32px;
+}
+.footer2{
+    max-width: 30vw;
+    font-size:22px;
+    font-style: var(--style2);
+    font-weight: 500;
+    padding: 25px;
+   
+}
+.footer2 li{
+    list-style: none;
+    margin: 15px;
+}
+.footer2 li a{
+    text-decoration: none;
+    color: white;}
+.footer3{
+    max-width: 30vw;
+    font-size:22px;
+    font-style: var(--style2);
+    font-weight: 500;
+    padding: 25px;
+   
+}
+.footer3 li {
+    list-style: none;
+    margin: 15px;
+}
+.footer3 li a{
+    text-decoration: none;
+    color: white;
+}
+.list{
+    margin: 15px;
+
+}
+.social-icons {
+    display: flex;
+    margin-top: 15px;
+    margin-right: 15px;
+}
+
+.social-icons a {
+   margin-left: 54px;
+   margin-bottom: 12px;
+}
+
+.social-icons img {
+    width: 32px;
+    height: 32px;
+}
+@media (max-width:900px){
+    footer{
+        display: flex;
+        flex-direction: column;
+        justify-content:flex-start;
+        align-items: flex-start;
+    }
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: rgb(1,58,99);
+    color: white;
+    
+    margin: auto;
+}
+
+.site-name {
+    font-family:ROBOTO (HEADING);
+    font-weight: bolder;
+    display: flex;
+    flex-direction: column;
+    font-size:23PX;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    font-family: "Lato", sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+
+}
+
+.nav-links li {
+    margin: 0 1.5rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff6347; /* Change color on hover */
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    height: 3px;
+    width: 25px;
+    background-color: white;
+    margin: 3px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide links initially */
+        flex-direction: column;
+        position: absolute;
+        background-color: black;
+        top: 60px; /* Position below the navbar */
+        right: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex; /* Show links when active */
+    }
+
+    .hamburger {
+        display: flex; /* Show hamburger icon */
+    }
+
+    .site-name {
+        font-size: 24px; /* Adjust font size for smaller screens */
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="cursor"></div>
+    <nav class="navbar">
+        <div class="nav-links">
+            <div>
+                <a href="front.html">
+                AUTOMOTIVE <br> CARE
+            </a></div>
+
+        </div>
+        <ul class="nav-links">
+            
+            <li><a href="Accessories.html">Product</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Mico Free Website Template - Free-CSS.com/mico-html/contact.html">Contact</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+        <div class="hamburger" onclick="togglemenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    
+
+  <!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-text-box">
+        <h2>Rent Your Dream Car Today!</h2>
+        <h4>Choose from a wide range of Indian cars available for daily rental.</h4>
+        
+    </div>
+</section>
+
+
+
+    <!-- Car Listings Section -->
+    <section id="cars" class="car-listings">
+        <div class="container">
+            <div class="ww">
+            <h2>Available Cars for Rent</h2>
+</div>
+            <!-- Car 1 -->
+            <div class="car-card">
+                <img src="octavia-exterior-right-front-three-quarter-4.webp" alt="Skoda Octavia">
+                <h3>Skoda Octavia</h3>
+                <p>A luxurious sedan known for its refined ride and modern technology.</p>
+                <p class="price">₹3,500 per day</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+            <!-- Car 2 -->
+            <div class="car-card">
+                <img src="toyota-innova-crysta-gx-limited-edition-launched-5-600x338.jpg" alt="Toyota Innova Crysta">
+                <h3>Toyota Innova Crysta</h3>
+                <p>A spacious and powerful MPV, ideal for family trips.</p>
+                <p class="price">₹3,000 per day</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+            <!-- Car 3 -->
+            <div class="car-card">
+                <img src="tata-harrier-10-1718258934.avif" alt="Tata Harrier">
+                <h3>Tata Harrier</h3>
+                <p>A bold SUV with powerful performance and premium features.</p>
+                <p class="price">₹2,800 per day</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+            <!-- Car 4 -->
+            <div class="car-card">
+                <img src="modified-mahindra-thar-16.jpg" alt="Mahindra Thar">
+                <h3>Mahindra Thar</h3>
+                <p>A rugged off-roader designed for adventure and tough terrains.</p>
+                <p class="price">₹2,800 per day</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+            <!-- Car 5 -->
+            <div class="car-card">
+                <img src="sibf.jpg" alt="Hyundai Creta">
+                <h3>Hyundai Creta</h3>
+                <p>A stylish and feature-packed SUV for an enjoyable drive.</p>
+                <p class="price">₹2,500 per day</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+            <!-- Car 6 -->
+            <div class="car-card">
+                <img src="6_52.jpeg" alt="Honda City">
+                <h3>Honda City</h3>
+                <p>A premium sedan with superior comfort and elegant design.</p>
+                <p class="price">₹2,200 per day</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+            <!-- Car 7 -->
+            <div class="car-card">
+                <img src="nexon-ev-exterior-right-front-three-quarter-74.webp" alt="Tata Nexon EV">
+                <h3>Tata Nexon EV</h3>
+                <p>An electric SUV offering eco-friendly driving with a modern design.</p>
+                <p class="price">₹2,000 per day</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+            <!-- Car 8 -->
+            <div class="car-card">
+                <img src="ezgif.com-gif-maker-9ll-1.webp" alt="Ford EcoSport">
+                <h3>Ford EcoSport</h3>
+                <p>A compact SUV with dynamic performance and a sporty look.</p>
+                <p class="price">₹1,800 per day</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+            <!-- Car 9 -->
+            <div class="car-card">
+                <img src="ruuu.jpg" alt="Hyundai Verna">
+                <h3>Hyundai Verna</h3>
+                <p>A stylish and comfortable sedan with advanced features.</p>
+                <p class="price">₹1,500 per day</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+            <!-- Car 10 -->
+            <div class="car-card">
+                <img src="New-Maruti-Suzuki-Baleno-2022-Car-India-Review-_DSC5214-640x460.jpg" alt="Maruti Suzuki Baleno">
+                <h3>Maruti Suzuki Baleno</h3>
+                <p>A popular hatchback with a smooth drive and great fuel efficiency.</p>
+                <p class="price">₹1,200 per day</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+            <!-- Car 11 -->
+            <div class="car-card">
+                <img src="b606f4a3-828c-4525-9b10-7f64e1edb820-500x500.webp" alt="Maruti Suzuki Alto">
+                <h3>Maruti Suzuki Alto</h3>
+                <p>A budget-friendly hatchback that's easy to drive and maintain.</p>
+                <p class="price">₹800 per day</p>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <h3>Step 1</h3>
+                    <p>Browse and select the car you want to rent.</p>
+                </div>
+                <div class="step">
+                    <h3>Step 2</h3>
+                    <p>Choose your rental duration and check availability.</p>
+                </div>
+                <div class="step">
+                    <h3>Step 3</h3>
+                    <p>Confirm your booking and enjoy your ride.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Location Popup -->
+<div id="location-popup" class="popup-overlay">
+    <div class="popup-content">
+        <h2>Enter Your Location</h2>
+        <input type="text" id="location-input" placeholder="Enter your location">
+        <button id="submit-location">Submit</button>
+        <button id="close-popup" class="close-btn">Close</button>
+    </div>
+</div>
+
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer1">
+            <div class="foothead">AUTOMOTIVE <br>
+                CARE </div>
+                <div class="address">Address: <br>
+
+                    Microtek College of Management & Technology
+                    
+                    C-27/279, A-2, Lahurabir Rd, Maldahiya, Sidhgiribagh, Varanasi, Uttar
+                    Pradesh 221001</div>
+                </p>
+                <div class="social-icons">
+                    <a href="#"><img src="assest/image/face.png" alt="Facebook"></a>
+                    <a href="#"><img src="assest/image/insta.png" alt="Instagram"></a>
+                    <a href="#"><img src="assest/image/x.png" alt="Twitter"></a>
+                    <a href="#"><img src="assest/image/you.png" alt="YouTube"></a>
+                </div>
+        </div>
+        <div class="footer2">
+            <ul class="list">About</ul>
+            <li><a href="#">Mission & Vision</a></li>
+
+        <li><a href="#"> Our Journey</li>
+                
+               <li><a href="#"> Our Team</li>
+                
+               <li><a href="#"> Achievements</a></li>
+        </div>
+        <div class="footer3">
+
+            <ul class="list">Resource</ul>
+            
+        <li><a href="#">Contact us</a></li>
+                
+               <li><a href="#">FAQS</a> </li>
+                
+                <li><a href="#"> Term and Condition</a></li>
+        </div>
+    </footer>
+
+    </body>
+        <script>
+
+
+    <a href="javascript:history.back()" class="back-button">
+        <i class="fas fa-arrow-left"></i> Back
+    </a>
+
+    
+
+            window.onload = function() {
+                document.getElementById('location-popup').style.display = 'flex';
+            };
+        
+            // Close the popup when the user clicks the close button
+            document.getElementById('close-popup').onclick = function() {
+                document.getElementById('location-popup').style.display = 'none';
+            };
+        
+            // Handle location submission
+            document.getElementById('submit-location').onclick = function() {
+                var location = document.getElementById('location-input').value;
+                if (location) {
+                    alert('Location submitted: ' + location);
+                    document.getElementById('location-popup').style.display = 'none';
+                } else {
+                    alert('Please enter a location.');
+                }
+            };
+            function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('active');
+        }
+        </script>
+        
+    </footer>
+</body>
+</html>

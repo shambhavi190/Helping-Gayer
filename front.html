@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automotie care</title>
+ 
+</head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+::-webkit-scrollbar {
+    width: 15px; /* Width of the scrollbar */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #000000; /* Track background */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #FFD700; /* Thumb background (yellow in your example) */
+    border-radius: 10px; /* Roundness of the thumb */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(229, 255, 0); /* Thumb background on hover */
+  }
+  
+
+body {
+    height: 200vh; /* Just to make the scrollbar appear */
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; /* Light background for contrast */
+}
+
+h1 {
+    color: #333; /* Header color */
+}
+
+p {
+    line-height: 1.6; /* Improved line height for readability */
+}
+body{
+       
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background-color: rgb(247, 240, 240); /* Dark background to resemble your image */
+        position: relative;
+    }
+
+    /* The custom cursor style */
+    .cursor {
+        z-index: 6;
+        width: 40px;
+        height: 40px;
+        border: 4px solid #20e2a1;
+        border-radius: 50%;
+        position: relative;
+        pointer-events: none; /* Makes sure the cursor doesn't interfere with clicking */
+        transform: translate(-50%, -50%);
+       
+    }
+
+    .cursor::before {
+        content: '';
+        width: 9px;
+        height: 9px;
+        background-color: hsl(61, 80%, 55%);
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        a:hover ~ .cursor, button:hover ~ .cursor {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+    }
+    
+
+
+    
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: rgb(1,58,99);
+    color: white;
+    
+    margin: auto;
+}
+
+.site-name {
+    font-family:ROBOTO (HEADING);
+    font-weight: bolder;
+    display: flex;
+    flex-direction: column;
+    font-size:23PX;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    font-family: "Lato", sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+
+}
+
+.nav-links li {
+    margin: 0 1.5rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff6347; /* Change color on hover */
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    height: 3px;
+    width: 25px;
+    background-color: white;
+    margin: 3px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide links initially */
+        flex-direction: column;
+        position: absolute;
+        background-color: black;
+        top: 60px; /* Position below the navbar */
+        right: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex; /* Show links when active */
+    }
+
+    .hamburger {
+        display: flex; /* Show hamburger icon */
+    }
+
+    .site-name {
+        font-size: 24px; /* Adjust font size for smaller screens */
+    }
+}
+.section2{
+    background-image: url(assest/image/x.png);
+    
+    margin: auto;
+    
+    padding-top: 25px;
+    margin-bottom: 45px;
+}
+.sub1{
+    font-size: 52px;
+    font-weight: 800;
+    font-family: LATO (BODY);
+    margin-left: 42px;
+    color: rgb(1,58,99);
+}
+.para1{
+    font-family: var(--style2);
+    font-size: 18px;
+    padding: 1 10px;
+    margin-left: 42px;
+    color: rgb(1,58,99);
+    
+
+}
+.imagesec1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 450px;
+    margin: auto;
+    /* background-image: url("assest/image/23.png");
+    ba */
+  
+
+}
+
+
+.sec1img{
+    max-height: 400px;
+    max-width: 350px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  
+}
+
+.sec12img{
+    max-height: 400px;
+    max-width: 350px;
+    object-fit: cover;
+  
+}
+
+.sec13img {
+    max-height: 400px;
+    max-width: 350px;
+    object-fit: cover;
+    margin-bottom: 8px;
+  
+}
+.sec1topic, .button-style {
+   
+    cursor:  pointer;
+    font-size: 28px;
+    font-family: var(--style2);
+    font-weight: bolder;
+    background-color: rgb(26,117,159);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 55px;
+    margin-bottom: 85px;
+   
+    
+}
+@media (min-width: 1100px) {
+    .img-sec {
+        display: flex;
+        flex-direction: row; /* Arrange items horizontally */
+        justify-content: space-around; /* Space items evenly */
+        gap: 20px;
+    }
+}
+.img-sec{
+    margin-bottom: 89px;
+}
+.all-in-one { 
+    
+    position: relative;
+    background-color: rgb(1,73,124);
+    min-height: 40vh;
+    margin: auto;
+    margin-top: 50px;
+    color: white;
+    margin-bottom: 25px;
+    /* Center items vertically */
+}
+
+.all-head {
+    font-size: 42px;
+    font-family: var(--style);
+    padding: 5px;
+    font-weight: 600;
+   
+}
+
+
+
+.all-para {
+    max-width: 90vw;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight:300px ;
+    font-family: var(--style);
+    padding: 5px;
+    font-weight: 400;
+    margin: 10px 20px;
+}
+@media (max-width:1080px) {
+    .all-para{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.allimg {
+    height: 300px;
+    width: auto; /* Maintain aspect ratio */
+}
+
+/* Media query for screens smaller than 1100px */
+@media (min-width: 1080px) {
+    .allimg {
+        position: absolute;
+        top: -88px;
+        right: 20px;
+    }
+
+    .all-head {
+        font-size: 48px; /* Reduce font size */
+        padding-left: 50px;
+        padding-top: 50px; /* Adjust margin */
+    }
+
+    .p1 {
+        max-width: 60vw; 
+        padding-left: 50px;/* Allow more width on smaller screens */
+        font-size: 24px;
+        padding-bottom: 20px;
+        
+    }
+
+    .all-para {
+        flex-direction: column; /* Stack paragraph items */
+         /* Center text */
+        margin: 10px 0; /* Adjust margin */
+    }
+
+    .allimg {
+        margin-top: 20px; /* Add space above the image */
+        max-width: 100%; /* Make the image responsive */
+        height: 300px; /* Maintain aspect ratio */
+    }
+}
+.imagesec2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 450px;
+    margin: auto;
+    margin-left: 42px;
+    /* background-image: url("assest/image/23.png");
+    ba */
+  
+
+}
+.sec2img{
+    max-height: 350px;
+    max-width: 400px;
+    object-fit: cover;
+  
+}
+.sec2topic{
+   
+
+    font-size: 38px;
+    font-family: var(--style2);
+    font-weight: 800;
+    color:rgb(1,58,99);
+    
+  
+    
+    padding: 10px;
+border-radius: 25px;
+
+}
+.sec3topic{
+   
+
+    font-size: 38px;
+    font-family: var(--style2);
+    font-weight: 800;
+    margin-left: 32px;
+    color:rgb(1,58,99);
+    padding: 10px;
+border-radius: 25px;
+
+}
+@media (min-width: 1100px) {
+    .img-sec2 {
+        display: flex;
+        flex-direction: row; 
+        justify-content: space-around; 
+        gap: 20px;
+    }
+}
+.img-sec{
+    margin-bottom: 89px;
+}
+.section3{
+    background-image: url(assest/image/4k-white-i308ljad82204626.jpg);
+    background-position-x: center;
+}
+.explore{
+    font-size: 58px;
+    font-weight: 900;
+    margin: 15px;
+    color: rgb(0,53,102);
+    font-family: var(--style);
+    margin-left: 50px;
+    margin-top: 43px;
+}
+.sec2para{
+    font-size: 24px;
+    font-weight: 400;
+    font-style: var(--style2);
+    color: rgb(24,78,119);
+    padding: 15px;
+    margin-left: auto;
+    margin-bottom: 95px;
+    
+}
+.sec3para{
+    font-size: 24px;
+    font-weight: 400;
+    font-style: var(--style2);
+    color: rgb(24,78,119);
+    padding: 15px;
+    margin-left: auto;
+   
+}
+.section4{
+   
+    background-color:rgb(1,58,99);
+    width: 100%;
+    height: 70%;
+   
+}
+.sec4head{
+    
+    font-size: 48px;
+    color: white;
+    text-align: center;
+    font-family: var(--style);
+    font-weight: 700;
+    margin: 10px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+    
+
+
+.rental-cards {
+    display: flex;
+    gap: 34px;
+    padding: 10px;
+    margin-left: 42px;
+}
+
+
+
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1px; 
+    margin-left: 122px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.8); /* Translucent background */
+    border-radius: 12px;
+    overflow: hidden;
+    
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.card-content {
+    padding: 1px;
+}
+
+.card-content h3 {
+    margin: 0 0 1px;
+    font-size: 1px;
+}
+
+.card img {
+    width: 50%;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    margin-right:42px ;
+    
+}
+.card1 {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    margin-right:42px ;
+    
+}
+
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.fuel-type {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #e5f5f9;
+    color: #0d7377;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.card-content h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.card-details {
+    display: flex;
+    justify-content: space-around;
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.card-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.details-btn, .book-btn {
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.details-btn {
+    background-color: #f0a500;
+    color: white;
+}
+
+.book-btn {
+    background-color: hsl(122, 100%, 50%);
+    color: white;
+    margin-bottom: 4px;
+}
+
+
+@media (min-width: 1100px) {
+   
+    
+
+    .mechanic-at-door{
+        background-image:url(assest/image/MECHANIIINC\ BG.png) ;
+        background-position: right;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 400px;
+        position: relative;
+        
+        
+    }
+    .mechanic-head{
+        font-size: 48px;
+        font-family: var(--style);
+        font-weight: 600;
+        padding: 15px;
+        text-align: center;
+
+        
+    }
+    
+
+
+    .small-cards-container {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #f4f4f400;
+    gap: 53px;
+    margin-left: 446px;
+    margin-top: 23px;
+}
+
+.small-card {
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 180px; /* Small card width */
+    height: a;
+    transition: transform 0.3s ease;
+    text-align: center;
+    padding: 15px;
+}
+
+.small-card:hover {
+    transform: scale(1.05);
+}
+
+.small-card img {
+    width: 100%;
+    height: 120px;
+    border-radius: 8px;
+}
+
+.card-content h3 {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #333;
+}
+
+.card-content p {
+    font-size: 14px;
+    color: #666;
+}
+
+.card-btn {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.card-btn:hover {
+    background-color: #0056b3;
+}
+
+       
+}
+.sec5{
+  background-color: rgb(1,58,99);
+   background-size: 100%;
+   margin: auto;
+}
+.vehicle{
+    font-size: 58px;
+    color: white;
+    font-family: var(--style);
+    font-weight:600 ;
+    text-align: center;
+    padding: 15px;
+}
+
+
+ .sec5poster{
+    object-fit:contain;
+height: 370px;
+width: 1380px;
+align-items: left;
+}
+footer{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    color: white;
+    background-color:#1e567e;
+    margin: auto;
+}
+
+.foothead{
+    font-size: 56px;
+    font-style: var(--style);
+     font-weight: 700;
+     padding: 15px;
+     margin-left: 32px;
+}
+.address{
+    max-width: 30vw;
+    font-size:20px;
+    font-style: var(--style2);
+    font-weight: 400;
+    padding: 15px;
+     margin-left: 32px;
+}
+.footer2{
+    max-width: 30vw;
+    font-size:22px;
+    font-style: var(--style2);
+    font-weight: 500;
+    padding: 25px;
+   
+}
+.footer2 li{
+    list-style: none;
+    margin: 15px;
+}
+.footer2 li a{
+    text-decoration: none;
+    color: white;}
+.footer3{
+    max-width: 30vw;
+    font-size:22px;
+    font-style: var(--style2);
+    font-weight: 500;
+    padding: 25px;
+   
+}
+.footer3 li {
+    list-style: none;
+    margin: 15px;
+}
+.footer3 li a{
+    text-decoration: none;
+    color: white;
+}
+.list{
+    margin: 15px;
+
+}
+.social-icons {
+    display: flex;
+    margin-top: 15px;
+    margin-right: 15px;
+}
+
+.social-icons a {
+   margin-left: 54px;
+   margin-bottom: 12px;
+}
+
+.social-icons img {
+    width: 32px;
+    height: 32px;
+}
+@media (max-width:900px){
+    footer{
+        display: flex;
+        flex-direction: column;
+        justify-content:flex-start;
+        align-items: flex-start;
+    }
+}
+.car-card {
+            background-color: hsl(0, 7%, 94%);
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            width: calc(21.343% - 20px);
+            float: left;
+            margin-right: 32px;
+            
+        margin-left: 32px;
+        }
+
+        .car-card img {
+            width: 230px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .car-card h3 {
+            margin: 15px 0 10px;
+        }
+
+        .car-card p {
+            margin-bottom: 10px;
+        }
+
+        .car-card .price {
+            font-size: 20px;
+            color: #ff6f61;
+            margin-bottom: 15px;
+        }
+
+        .car-card .btn {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .qq img {
+    max-width: 100%;
+    height: 122px;
+    display: block;
+    margin-left: 82px;
+}
+</style>
+<body>
+     <div class="cursor"></div>
+    <nav class="navbar">
+        <div class="site-name">
+            <div>AUTOMOTIVE</div>
+            <div>CARE</div>
+        </div>
+        <ul class="nav-links">
+            
+            <li><a href="accessorise car.html">Product</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Mico Free Website Template - Free-CSS.com/mico-html/contact.html">Contact</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    <div class="section2">
+        <div class="sub1">
+                  AUTOMOTIVE CARE
+        </div>
+        <div class="para1">All-in-One Vehicle Services: Accessories, Rentals, and On-Demand
+        </div>
+        <div class="para1">Mechanic at Your Doorstep</div>
+        <div class="img-sec">
+            
+                <div class="imagesec1">
+                    <img class="sec1img" src="assest/image/123.png" alt="">
+                    <button class="button-style" onclick="window.location.href='car.html';">
+                    <span class="sec1topic">Rental Service</span>
+                </div>
+            </button>
+
+
+                <div class="imagesec1">
+                    <img class="sec12img" src="assest/image/122.png" alt="">
+                    <button class="button-style" onclick="window.location.href='machanic.html';">
+                    <span class="sec1topic">Mechanics Service</span>
+                    </a>
+                </div>
+            </button>
+
+
+
+                           <div class="imagesec1">
+                    <img class="sec13img" src="assest/image/118.png" alt="">
+                    <button class="button-style" onclick="window.location.href='Accessories.html';">
+                    <span class="sec1topic">Accessories</span>
+                </div>
+            </button>
+        </div>
+       
+
+        
+    </div>
+    <div class="all-in-one">
+        <div class="all-head">All-in-One Vehicle Services</div>
+        <div class="all-para">
+            <div class="p1"> Get everything your vehicle needs in one place — from top-quality accessories and
+            affordable rental options to expert mechanics delivered right to your doorstep.
+            Convenience and reliability, redefined.</div>
+            <img src="assest/image/19.png" alt="" class="allimg">
+        </div>
+    </div>
+    <div class="section3">
+        <div class="explore">
+            Explore Our Services
+        </div>
+        <div class="img-sec2">
+        <div class="imagesec2">
+            <img class="sec2img" src="assest/image/23.png" alt="">
+            <span class="sec2topic">Rental Service</span>
+            <span class="sec2para">"Affordable rentals for short or long
+                trips, available at the tap of a
+                button"</span>
+
+        </div>
+        <div class="imagesec2">
+            <span class="sec3para">"Enhance your vehicle with premium
+                accessories designed for comfort,
+                performance, and style"</span>
+            <img class="sec1img" src="assest/image/18.png" alt="">
+            <span class="sec3topic">Assessories</span>
+            
+
+        </div>
+        <div class="imagesec2">
+            <img class="sec1img" src="assest/image/22.png" alt="">
+
+            <span class="sec2topic">Mechanic Service</span>
+            <span class="sec2para">"Book professional mechanics to
+                handle repairs and services right
+                at your location"</span>
+
+        </div>
+    </div>
+    </div>
+   
+    <div class="section4">
+        <div class="sec4head">Premium car</div>
+        <div class="rental-cards">
+            <div class="card">
+                <div class="fuel-type">Petrol</div>
+                <img src="assest/image/octaviaoctaviarightfrontthreequarter.jpeg" alt="Skoda Octavia" class="card-image">
+                <div class="card-content">
+                    <h3>Skoda Octavia</h3>
+                    <div class="card-details">
+                        <span>4 Seater</span>
+                        <span>Automatic</span>
+                        <span>15.81Km/1-lt</span>
+                    </div>
+                    <p>Starting at ₹3300/Day</p>
+                    <div class="card-buttons">
+                        <a href="details-page-skoda.html">
+                            <button class="details-btn">Details</button>
+                        </a>
+                        <a href="book-now-skoda.html">
+                            <button class="book-btn">Book Now</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="card">
+                <div class="fuel-type">Diesel</div>
+                <img src="assest/image/rskpp0b_1638613.jpg" alt="Mahindra Thar" class="card-image">
+                <div class="card-content">
+                    <h3>Mahindra Thar</h3>
+                    <div class="card-details">
+                        <span>4 Seater</span>
+                        <span>Manual</span>
+                        <span>13.5Km/1-lt</span>
+                    </div>
+                    <p>Starting at ₹2200/Day</p>
+                    <div class="card-buttons">
+                        <a href="details-page-thar.html">
+                            <button class="details-btn">Details</button>
+                        </a>
+                        <a href="book-now-thar.html">
+                            <button class="book-btn">Book Now</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="card">
+                <div class="fuel-type">Diesel</div>
+                <img src="assest/image/20201124124812_Toyota-Innova-Crysta-2020.jpg" alt="Toyota Innova Crysta" class="card-image">
+                <div class="card-content">
+                    <h3>Toyota Innova Crysta</h3>
+                    <div class="card-details">
+                        <span>7 Seater</span>
+                        <span>Manual</span>
+                        <span>12Km/1-lt</span>
+                    </div>
+                    <p>Starting at ₹1500/Day</p>
+                    <div class="card-buttons">
+                        <a href="details-page-innova.html">
+                            <button class="details-btn">Details</button>
+                        </a>
+                        <a href="book-now-innova.html">
+                            <button class="book-btn">Book Now</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="card">
+                <div class="fuel-type">Diesel</div>
+                <img src="assest/image/hyundai-creta-right-front-three-quarter9.jpg" alt="Hyundai Creta" class="card-image">
+                <div class="card-content">
+                    <h3>Hyundai Creta</h3>
+                    <div class="card-details">
+                        <span>5 Seater</span>
+                        <span>Manual</span>
+                        <span>5Km/1-lt</span>
+                    </div>
+                    <p>Starting at ₹1500/Day</p>
+                    <div class="card-buttons">
+                        <a href="details-page-creta.html">
+                            <button class="details-btn">Details</button>
+                        </a>
+                        <a href="book-now-creta.html">
+                            <button class="book-btn">Book Now</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <div class="mechanic-at-door">
+        
+            <div class="mechanic-head">Mechanic At Door</div>
+           
+                    
+            <div class="small-cards-container">
+                <div class="small-card">
+                    <img src="assest/image/12.png" alt="Mechanic 1">
+                    <div class="card-content">
+                        <h3>Engine related</h3>
+                        <a href="mechanic1-booking-page.html" class="card-btn">Book Now</a>
+                       
+                    </div>
+                </div>
+                <div class="small-card">
+                    <img src="assest/image/13.png" alt="Mechanic 2">
+                    <div class="card-content">
+                        <h3>Car towing</h3>
+                        <a href="mechanic1-booking-page.html" class="card-btn">Book Now</a>
+                      
+                    </div>
+                </div>
+                <div class="small-card">
+                    <img src="assest/image/14.png" alt="Mechanic 3">
+                    <div class="card-content">
+                        <h3>car washing</h3>
+                        <a href="mechanic1-booking-page.html" class="card-btn">Book Now</a>
+                      
+                    </div>
+                </div>
+            
+
+            <div class="small-card">
+                <img src="assest/image/15.png" alt="Mechanic 3">
+                <div class="card-content">
+                    <h3>Electronical issues</h3> <a href="mechanic1-booking-page.html" class="card-btn">Book Now</a>
+                    
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    
+    
+    <div class="section5">
+        <div class="sec5">
+            <div class="vehicle">Vehicle Accessories</div>
+            <div class="car-card">
+               
+                    <img src="download.jpeg" alt="Skoda Car Cover">
+                    <h3>Skoda Car Cover</h3>
+                    <p>A high-quality, weatherproof cover to protect your car from dust and rain.</p>
+                    <p class="price">₹1,200</p>
+                    <a href="#" class="btn">Buy Now</a>
+                </div>
+                <div class="car-card">
+                    <img src="bm16_1.webp" alt="Skoda Alloy Wheels">
+                    <h3>Alloy Wheels</h3>
+                    <p>Stylish and durable alloy wheels designed for performance and aesthetics.</p>
+                    <p class="price">₹25,000</p>
+                    <a href="#" class="btn">Buy Now</a>
+                </div>
+                <div class="car-card">
+                    <img src="pegasus-premium-7d-luxury-car-floor-mat.jpg" alt="Skoda Floor Mats">
+                    <h3>Floor Mats</h3>
+                    <p>Premium quality floor mats designed for a perfect fit and easy cleaning.</p>
+                    <p class="price">₹1,800</p>
+                    <a href="#" class="btn">Buy Now</a>
+                </div>
+                <div class="car-card">
+                    <img src="51yl6ajUhCL._AC_UF1000,1000_QL80_.jpg" alt="Skoda Floor Mats">
+                    <h3>wind shild wiper</h3>
+                    <p>Premium quality wind shild wiper designed for a perfect fit and easy cleaning.</p>
+                    <p class="price">₹1,800</p>
+                    <a href="#" class="btn">Buy Now</a>
+                </div>
+               
+                
+            <div class="sec5img2"><img src="assest/image/PIIIIIIIIIIIIIII.png" alt="" class="sec5poster"></div>
+        </div>
+    </div>
+    <div class="sec6">
+        <div id="container"></div>
+		<div id="slider-container">
+			<span onclick="slideRight()" class="btn"></span>
+			<div id="slider">
+				
+			</div>
+			<span onclick="slideLeft()" class="btn"></span>
+		</div>
+	</div>
+        
+    </div>
+    <footer>
+        <div class="footer1">
+            <div class="foothead">AUTOMOTIVE <br>
+                CARE </div>
+                <div class="address">Address: <br>
+
+                    Microtek College of Management & Technology
+                    
+                    C-27/279, A-2, Lahurabir Rd, Maldahiya, Sidhgiribagh, Varanasi, Uttar
+                    Pradesh 221001</div>
+                </p>
+                <div class="social-icons">
+                    <a href="#"><img src="assest/image/face.png" alt="Facebook"></a>
+                    <a href="#"><img src="assest/image/insta.png" alt="Instagram"></a>
+                    <a href="#"><img src="assest/image/x.png" alt="Twitter"></a>
+                    <a href="#"><img src="assest/image/you.png" alt="YouTube"></a>
+                </div>
+        </div>
+        <div class="footer2">
+            <ul class="list">About</ul>
+            <li><a href="#">Mission & Vision</a></li>
+
+        <li><a href="#"> Our Journey</li>
+                
+               <li><a href="#"> Our Team</li>
+                
+               <li><a href="#"> Achievements</a></li>
+        </div>
+        <div class="footer3">
+
+            <ul class="list">Resource</ul>
+            
+        <li><a href="#">Contact us</a></li>
+                
+               <li><a href="#">FAQS</a> </li>
+                
+                <li><a href="#"> Term and Condition</a></li>
+        </div>
+    </footer>
+
+
+
+
+    <script src="script.js"></script>
+</body>
+<script>
+    var container = document.getElementById('container')
+var slider = document.getElementById('slider');
+var slides = document.getElementsByClassName('slide').length;
+var buttons = document.getElementsByClassName('btn');
+
+
+var currentPosition = 0;
+var currentMargin = 0;
+var slidesPerPage = 0;
+var slidesCount = slides - slidesPerPage;
+var containerWidth = container.offsetWidth;
+var prevKeyActive = false;
+var nextKeyActive = true;
+
+
+window.addEventListener("resize", checkWidth);
+
+
+function checkWidth() {
+	containerWidth = container.offsetWidth;
+	setParams(containerWidth);
+}
+
+
+function setParams(w) {
+	if (w < 551) {
+		slidesPerPage = 1;
+	} else {
+		if (w < 901) {
+			slidesPerPage = 2;
+		} else {
+			if (w < 1101) {
+				slidesPerPage = 3;
+			} else {
+				slidesPerPage = 4;
+			}
+		}
+	}
+	slidesCount = slides - slidesPerPage;
+	if (currentPosition > slidesCount) {
+		currentPosition -= slidesPerPage;
+	};
+	currentMargin = - currentPosition * (100 / slidesPerPage);
+	slider.style.marginLeft = currentMargin + '%';
+	if (currentPosition > 0) {
+		buttons[0].classList.remove('inactive');
+	}
+	if (currentPosition < slidesCount) {
+		buttons[1].classList.remove('inactive');
+	}
+	if (currentPosition >= slidesCount) {
+		buttons[1].classList.add('inactive');
+	}
+}
+
+
+setParams();
+
+
+function slideRight() {
+	if (currentPosition != 0) {
+		slider.style.marginLeft = currentMargin + (100 / slidesPerPage) + '%';
+		currentMargin += (100 / slidesPerPage);
+		currentPosition--;
+	};
+	if (currentPosition === 0) {
+		buttons[0].classList.add('inactive');
+	}
+	if (currentPosition < slidesCount) {
+		buttons[1].classList.remove('inactive');
+	}
+};
+
+
+function slideLeft() {
+	if (currentPosition != slidesCount) {
+		slider.style.marginLeft = currentMargin - (100 / slidesPerPage) + '%';
+		currentMargin -= (100 / slidesPerPage);
+		currentPosition++;
+	};
+	if (currentPosition == slidesCount) {
+		buttons[1].classList.add('inactive');
+	}
+	if (currentPosition > 0) {
+		buttons[0].classList.remove('inactive');
+	}
+};
+
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+		
+</script>
+
+</html>

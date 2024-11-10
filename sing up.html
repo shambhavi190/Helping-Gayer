@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e3f2fd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .signup-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            transition: background-color 0.3s ease;
+        }
+
+        form h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 14px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input:focus {
+            border-color: #007bff;
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .password-container input {
+            width: calc(100% - px);
+        }
+
+        .eye-icon {
+            position: absolute;
+            right: 0px;
+            top: 10px;
+            cursor: pointer;
+        }
+
+        #password-strength {
+            margin-bottom: 1rem;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        button {
+            width: 50%;
+            padding: 0.75rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 82px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #error-message {
+            color: red;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        #username-status {
+            font-size: 12px;
+            color: #555;
+            text-align: right;
+        }
+
+        #password-strength span {
+            font-weight: bold;
+        }
+
+        .strength-weak {
+            color: red;
+        }
+
+        .strength-medium {
+            color: orange;
+        }
+
+        .strength-strong {
+            color: green;
+        }
+
+        .emoji {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container" id="form-container">
+        <form id="signupForm" onsubmit="return validateForm()">
+            <h2>Sign Up</h2>
+
+            <div id="emoji" class="emoji">😊</div>
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter username" oninput="checkUsername()">
+            <p id="username-status"></p>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter email">
+
+            <label for="password">Password:</label>
+            <div class="password-container">
+                <input type="password" id="password" name="password" placeholder="Enter password" oninput="checkPasswordStrength()">
+                <span class="eye-icon" onclick="togglePasswordVisibility()">👁</span>
+            </div>
+            <div id="password-strength"></div>
+
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" oninput="comparePasswords()">
+
+            <button type="submit">Sign Up</button>
+
+            <p id="error-message"></p>
+        </form>
+    </div>
+
+    <script>
+        // Emoji Feedback
+        const emoji = document.getElementById('emoji');
+        const formContainer = document.getElementById('form-container');
+
+        // Toggle Password Visibility
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById('password');
+            const icon = document.querySelector('.eye-icon');
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                icon.innerText = "🙈";
+            } else {
+                passwordField.type = "password";
+                icon.innerText = "🧐";
+            }
+        }
+
+        // Check Username Availability and Fun Message
+        function checkUsername() {
+            const username = document.getElementById('username').value;
+            const status = document.getElementById('username-status');
+            const messages = ["Looking good!", "Nice choice!", "Unique!", "Cool username!"];
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+
+            if (username.length < 4) {
+                status.innerText = "Username too short";
+                status.style.color = "red";
+            } else {
+                setTimeout(() => {
+                    if (username === "user123") {
+                        status.innerText = "Username already taken";
+                        status.style.color = "red";
+                    } else {
+                        status.innerText = randomMessage;
+                        status.style.color = "green";
+                    }
+                }, 500);
+            }
+        }
+
+        // Check Password Strength and Display Emoji
+        function checkPasswordStrength() {
+            const password = document.getElementById('password').value;
+            const strengthBar = document.getElementById('password-strength');
+            const weakPattern = /[a-zA-Z]/;
+            const mediumPattern = /\d+/;
+            const strongPattern = /[!@#$%^&*]/;
+            let strength = '';
+            emoji.style.visibility = "visible"; // Show emoji on password input
+
+            if (strongPattern.test(password) && mediumPattern.test(password) && weakPattern.test(password)) {
+                strength = '<span class="strength-strong">Strong</span>';
+                emoji.innerText = "💪";
+                formContainer.style.backgroundColor = "#c8e6c9"; // Green background for strong
+            } else if (mediumPattern.test(password) && weakPattern.test(password)) {
+                strength = '<span class="strength-medium">Medium</span>';
+                emoji.innerText = "🙂";
+                formContainer.style.backgroundColor = "#fff59d"; // Yellow background for medium
+            } else if (weakPattern.test(password)) {
+                strength = '<span class="strength-weak">Weak</span>';
+                emoji.innerText = "😟";
+                formContainer.style.backgroundColor = "#ffcdd2"; // Red background for weak
+            }
+
+            strengthBar.innerHTML = strength;
+        }
+
+        // Compare Passwords for Match
+        function comparePasswords() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                emoji.innerText = "😕";
+                formContainer.style.backgroundColor = "#ffccbc"; // Orange background for mismatch
+            } else {
+                emoji.innerText = "😊";
+                formContainer.style.backgroundColor = "#e3f2fd"; // Reset background for match
+            }
+        }
+
+        // Validate Form Before Submission
+        function validateForm() {
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const errorMessage = document.getElementById('error-message');
+
+            if (username === "") {
+                errorMessage.innerText = "Username is required";
+                return false;
+            }
+
+            if (email === "") {
+                errorMessage.innerText = "Email is required";
+                return false;
+            }
+
+            if (password === "") {
+                errorMessage.innerText = "Password is required";
+                return false;
+            }
+
+            if (confirmPassword !== password) {
+                errorMessage.innerText = "Passwords do not match";
+                return false;
+            }
+
+            errorMessage.innerText = ""; // Clear the error message
+            alert("Signup successful!");
+            return true; // Proceed with form submission
+        }
+    </script>
+</body>
+</html>

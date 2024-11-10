@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        Brator
+    </title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: hsl(0, 0%, 100%);
+            color: #fff;
+        }
+
+        .header {
+            background-color: rgb(1, 58, 99);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .header .nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header .nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .header .nav a:hover {
+            color: #ff4500;
+        }
+
+        .header .contact {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header .contact i {
+            color: #ff4500;
+        }
+
+        .hero {
+    background-image: url('dark-black-background-design-with-stripes_1017-38064.avif'); 
+    background-size: cover; 
+    background-position: center; 
+    height: 50vh;
+    color: white; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+}
+
+
+        .hero h1 {
+            font-size: 48px;
+            margin: 0;
+        }
+
+        .hero h1 span {
+            color: #ff4500;
+            font-size: 80px;
+        }
+
+        .hero button {
+            background-color: #ff4500;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px 0;
+            background-color: rgb(1, 58, 99);
+        }
+
+        .features .feature {
+            text-align: center;
+        }
+
+        .features .feature i {
+            font-size: 24px;
+            color: #ff4500;
+        }
+
+        .features .feature p {
+            margin: 5px 0 0;
+        }
+
+        .products {
+            padding: 20px;
+            color: black;
+        }
+
+        .products h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .products .categories {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .products .categories a {
+            color: hsl(0, 0%, 0%);
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 16px;
+        }
+
+        .products .categories a:hover {
+            color: #ff4500;
+        }
+
+        .products .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .products .product {
+            background-color: hwb(210 69% 26%);
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+            width: 200px;
+        }
+
+        .products .product img {
+            width: 100%;
+            height: 194px;
+        }
+
+        .products .product h3 {
+            color: black;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .products .product p {
+            color: black;
+            margin: 5px 0;
+        }
+
+        .products .product .price {
+            color: #ff4500;
+            font-size: 18px;
+        }
+
+        .products .product .old-price {
+            text-decoration: line-through;
+            color: hsl(0, 0%, 0%);
+        }
+
+        .products .product .view-button {
+            background-color: #ff4500; /* Button background color */
+            color: white; /* Button text color */
+            border: none; /* No border */
+            border-radius: 4px; /* Rounded corners */
+            padding: 10px 15px; /* Padding inside the button */
+            cursor: pointer; /* Change cursor on hover */
+            font-size: 14px; /* Button text size */
+            margin-top: 10px; /* Space above the button */
+            transition: background-color 0.3s; /* Transition effect */
+        }
+
+        .products .product .view-button:hover {
+            background-color: #e63946; /* Darker shade on hover */
+        }
+
+        .footer {
+            background-color: rgb(1, 58, 99);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+        .hero-text-box {
+    background-color: rgba(0, 0, 0, 0.252); /* Semi-transparent black box */
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+    
+    margin-top: 33px;
+        }
+.header-button {
+    background-color: #ff4500;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.header-button:hover {
+    background-color: #e63946;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: rgb(1,58,99);
+    color: white;
+    
+    margin: auto;
+}
+
+.site-name {
+    font-family:ROBOTO (HEADING);
+    font-weight: bolder;
+    display: flex;
+    flex-direction: column;
+    font-size:23PX;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    font-family: "Lato", sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+
+}
+
+.nav-links li {
+    margin: 0 1.5rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff6347; /* Change color on hover */
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    height: 3px;
+    width: 25px;
+    background-color: white;
+    margin: 3px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide links initially */
+        flex-direction: column;
+        position: absolute;
+        background-color: black;
+        top: 60px; /* Position below the navbar */
+        right: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex; /* Show links when active */
+    }
+
+    .hamburger {
+        display: flex; /* Show hamburger icon */
+    }
+
+    .site-name {
+        font-size: 24px; /* Adjust font size for smaller screens */
+    }
+}
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-links">
+            <div> 
+            <a href="front.html"> 
+             AUTOMOTIVE <br>CARE
+            </a>
+            
+            </div>
+    
+        </div>
+        <ul class="nav-links">
+            
+            <li><a href="accessorise car.html#qw">Product</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Mico Free Website Template - Free-CSS.com/mico-html/contact.html">Contact</a></li>
+            <li><a href="login.html">login</a></li>
+            <li><a href="accessorise car.html">Bikes</a></li>
+        </ul>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    <section class="hero">
+        <div class="hero-text-box">
+        <h1>
+            Original Parts for You
+            <span>
+                car
+            </span>
+        </h1>
+       </div>
+    </section>
+    <section class="features">
+        <div class="feature">
+            <i class="fas fa-truck">
+            </i>
+            <p>
+                Free Home Delivery
+            </p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-check-circle">
+            </i>
+            <p>
+                Quality Products
+            </p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-headset">
+            </i>
+            <p>
+                Online Support
+            </p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-undo">
+            </i>
+            <p>
+                30 Days Returns
+            </p>
+        </div>
+    </section>
+    <section class="products">
+        <h2>
+            Featured Product
+        </h2>
+        <div class="categories">
+            <a href="#">
+                All
+            </a>
+            <a href="#">
+                Body Parts
+            </a>
+            <a href="#">
+                Electronic
+            </a>
+            <a href="#">
+                Lighting
+            </a>
+            <a href="#">
+                Repair Parts
+            </a>
+        </div>
+        <div class="product-list"id="qw">
+            <div class="product">
+                <img alt="Engine Parts - Turbocharger Kit" height="200" src="download (11).jpeg" width="200" />
+                <h3>Engine Parts</h3>
+                <p>Turbocharger Kit</p>
+                <p class="price">$550.00</p>
+                <button class="view-button">View Details</button>
+            </div>
+            <div class="product">
+                <img alt="Brake System - High-Performance Brake Pads" height="200" src="download (12).jpeg" width="200" />
+                <h3>Brake System</h3>
+                <p>High-Performance Brake Pads</p>
+                <p class="price">$120.00</p>
+                <button class="view-button">View Details</button>
+            </div>
+            <div class="product">
+                <img alt="Lighting - Xenon HID Headlights" height="200" src="download (13).jpeg" width="200" />
+                <h3>Lighting</h3>
+                <p>Xenon HID Headlights</p>
+                <p class="price">$90.00</p>
+                <button class="view-button">View Details</button>
+            </div>
+            <div class="product">
+                <img alt="Suspension - Adjustable Coilovers" height="200" src="download (14).jpeg" width="200" />
+                <h3>Suspension</h3>
+                <p>Adjustable Coilovers</p>
+                <p class="price">$600.00</p>
+                <button class="view-button">View Details</button>
+            </div>
+            <div class="product">
+                <img alt="Exhaust System - Stainless Steel Performance Muffler" height="200" src="images (2).jpeg"width="200" />
+                <h3>Exhaust System</h3>
+                <p>Stainless Steel Performance Muffler</p>
+                <p class="price">$250.00</p>
+                <button class="view-button">View Details</button>
+            </div>
+            <div class="product">
+                <img alt="Wheels - Alloy Rims 18 Inch" height="200" src="download (15).jpeg" width="200" />
+                <h3>Wheels</h3>
+                <p>Alloy Rims 18 Inch</p>
+                <p class="price">$800.00</p>
+                <button class="view-button">View Details</button>
+            </div>
+            <div class="product">
+                <img alt="Air Filters - Performance Air Intake System" height="200" src="download (16).jpeg" width="200" />
+                <h3>Air Filters</h3>
+                <p>Performance Air Intake System</p>
+                <p class="price">$180.00</p>
+                <button class="view-button">View Details</button>
+            </div>
+            <div class="product">
+                <img alt="Tires - All-Terrain Tires" height="200" src="download (17).jpeg" width="200" />
+                <h3>Tires</h3>
+                <p>All-Terrain Tires</p>
+                <p class="price">$400.00</p>
+                <button class="view-button">View Details</button>
+            </div>
+            <div class="product">
+                <img alt="Car Battery - Lithium Ion Performance Battery" height="200" src="download (18).jpeg" width="200" />
+                <h3>Car Battery</h3>
+                <p>Lithium Ion Performance Battery</p>
+                <p class="price">$220.00</p>
+                <button class="view-button">View Details</button>
+            </div>
+            <div class="product">
+                <img alt="Interior - Leather Car Seat Covers" height="200" src="download (19).jpeg" width="200" />
+                <h3>Interior</h3>
+                <p>Leather Car Seat Covers</p>
+                <p class="price">$300.00</p>
+                <button class="view-button">View Details</button>
+            </div>
+        </div>
+        <div class="product-list">
+            <!-- Existing products -->
+        
+            <div class="product">
+                <img alt="Steering Wheel - Racing Steering Wheel" height="200" src="download (20).jpeg" width="200" />
+                <h3>Steering Wheel</h3>
+                <p>Racing Steering Wheel</p>
+                <p class="price">$180.00</p>
+                <button class="view-button">View Details</button>
+            </div>
+            <div class="product">
+                <img alt="Gearbox - Manual Transmission Gearbox" height="200" src="download (21).jpeg" width="200" />
+                <h3>Gearbox</h3>
+                <p>Manual Transmission Gearbox</p>
+                <p class="price">$1,200.00</p>
+                <button class="view-button">View Details</button>
+            </div>
+            <div class="product">
+                <img alt="Oil Filter - High-Performance Oil Filter" height="200" src="download (22).jpeg" width="200" />
+                <h3>Oil Filter</h3>
+                <p>High-Performance Oil Filter</p>
+                <p class="price">$25.00</p>
+                <button class="view-button">View Details</button>
+            </div>
+            <div class="product">
+                <img alt="Spoiler - Rear Wing Carbon Fiber" height="200" src="download (23).jpeg" width="200" />
+                <h3>Spoiler</h3>
+                <p>Rear Wing Carbon Fiber Spoiler</p>
+                <p class="price">$600.00</p>
+                <button class="view-button">View Details</button>
+            </div>
+            <div class="product">
+                <img alt="Fuel Injector - High-Performance Fuel Injectors" height="200" src="download (24).jpeg" width="200" />
+                <h3>Fuel Injector</h3>
+                <p>High-Performance Fuel Injectors</p>
+                <p class="price">$320.00</p>
+                <button class="view-button">View Details</button>
+            </div>
+        </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <p>
+            &copy; 2024 Brator. All Rights Reserved.
+        </p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        Brator
+    </title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: hsl(0, 0%, 100%);
+            color: #fff;
+        }
+
+        .header {
+            background-color: rgb(1, 58, 99);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .header .nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header .nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .header .nav a:hover {
+            color: #ff4500;
+        }
+
+        .header .contact {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header .contact i {
+            color: #ff4500;
+        }
+
+        .hero {
+    background-image: url('dark-black-background-design-with-stripes_1017-38064.avif'); 
+    background-size: cover; 
+    background-position: center; 
+    height: 50vh;
+    color: white; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+}
+
+
+        .hero h1 {
+            font-size: 48px;
+            margin: 0;
+        }
+
+        .hero h1 span {
+            color: #ff4500;
+        }
+
+        .hero button {
+            background-color: #ff4500;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px 0;
+            background-color: rgb(1, 58, 99);
+        }
+
+        .features .feature {
+            text-align: center;
+        }
+
+        .features .feature i {
+            font-size: 24px;
+            color: #ff4500;
+        }
+
+        .features .feature p {
+            margin: 5px 0 0;
+        }
+
+        .products {
+            padding: 20px;
+            color: black;
+        }
+
+        .products h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .products .categories {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .products .categories a {
+            color: hsl(0, 0%, 0%);
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 16px;
+        }
+
+        .products .categories a:hover {
+            color: #ff4500;
+        }
+
+        .products .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .products .product {
+            background-color: hwb(210 69% 26%);
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+            width: 200px;
+        }
+
+        .products .product img {
+            width: 100%;
+            height: 191px;
+        }
+
+        .products .product h3 {
+            color: black;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .products .product p {
+            color: black;
+            margin: 5px 0;
+        }
+
+        .products .product .price {
+            color: #ff4500;
+            font-size: 18px;
+        }
+
+        .products .product .old-price {
+            text-decoration: line-through;
+            color: hsl(0, 0%, 0%);
+        }
+
+        .products .product .view-button {
+            background-color: #ff4500; /* Button background color */
+            color: white; /* Button text color */
+            border: none; /* No border */
+            border-radius: 4px; /* Rounded corners */
+            padding: 10px 15px; /* Padding inside the button */
+            cursor: pointer; /* Change cursor on hover */
+            font-size: 14px; /* Button text size */
+            margin-top: 10px; /* Space above the button */
+            transition: background-color 0.3s; /* Transition effect */
+        }
+
+        .products .product .view-button:hover {
+            background-color: #e63946; /* Darker shade on hover */
+        }
+
+        .footer {
+            background-color: rgb(1, 58, 99);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+        .hero-text-box {
+    background-color: rgba(0, 0, 0, 0.252); /* Semi-transparent black box */
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+    
+    margin-top: 33px;
+        }
+.header-button {
+    background-color: #ff4500;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.header-button:hover {
+    background-color: #e63946;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: rgb(1,58,99);
+    color: white;
+    
+    margin: auto;
+}
+
+.site-name {
+    font-family:ROBOTO (HEADING);
+    font-weight: bolder;
+    display: flex;
+    flex-direction: column;
+    font-size:23PX;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    font-family: "Lato", sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+
+}
+
+.nav-links li {
+    margin: 0 1.5rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff6347; /* Change color on hover */
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    height: 3px;
+    width: 25px;
+    background-color: white;
+    margin: 3px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide links initially */
+        flex-direction: column;
+        position: absolute;
+        background-color: black;
+        top: 60px; /* Position below the navbar */
+        right: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex; /* Show links when active */
+    }
+
+    .hamburger {
+        display: flex; /* Show hamburger icon */
+    }
+
+    .site-name {
+        font-size: 24px; /* Adjust font size for smaller screens */
+    }
+}
+        
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-links">
+            <div> 
+            <a href="front.html"> 
+             AUTOMOTIVE <br>CARE
+            </a>
+            
+            </div>
+    
+        </div>
+    
+        <ul class="nav-links">
+            
+            <li><a href="accessorise car.html#qw">Product</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Mico Free Website Template - Free-CSS.com/mico-html/contact.html">Contact</a></li>
+            <li><a href="login.html">login</a></li>
+            <li><a href="Accessories.html">Car</a></li>
+        </ul>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    <section class="hero">
+        <div class="hero-text-box">
+        <h1>
+            Original Parts for You
+            <span>
+                Motorcycle
+            </span>
+        </h1>
+       </div>
+    </section>
+    <section class="features">
+        <div class="feature">
+            <i class="fas fa-truck">
+            </i>
+            <p>
+                Free Home Delivery
+            </p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-check-circle">
+            </i>
+            <p>
+                Quality Products
+            </p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-headset">
+            </i>
+            <p>
+                Online Support
+            </p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-undo">
+            </i>
+            <p>
+                30 Days Returns
+            </p>
+        </div>
+    </section>
+    <section class="products">
+        <h2>
+            Featured Product
+        </h2>
+        <div class="categories">
+            <a href="#">
+                All
+            </a>
+            <a href="#">
+                Body Parts
+            </a>
+            <a href="#">
+                Electronic
+            </a>
+            <a href="#">
+                Lighting
+            </a>
+            <a href="#">
+                Repair Parts
+            </a>
+        </div>
+        <div class="product-list">
+            <div class="product" id="qw">
+                <img alt="Helmet - Royal Enfield Open Face" height="200" src="download (25).jpeg" width="200" />
+                <h3>
+                    Helmet
+                </h3>
+                <p>
+                    Royal Enfield Open Face Helmet
+                </p>
+                <p class="price">
+                    $45.00
+                </p>
+                <button class="view-button">View Details</button>
+            </div>
+        
+            <div class="product">
+                <img alt="Gloves - Rynox Racing Gloves" height="200" src="download (26).jpeg" width="200" />
+                <h3>
+                    Gloves
+                </h3>
+                <p>
+                    Rynox Racing Gloves
+                </p>
+                <p class="price">
+                    $25.00
+                </p>
+                <button class="view-button">View Details</button>
+            </div>
+        
+            <div class="product">
+                <img alt="Saddle Bags - Royal Enfield Leather Bags" height="200" src="download (27).jpeg" width="200" />
+                <h3>
+                    Saddle Bags
+                </h3>
+                <p>
+                    Royal Enfield Leather Saddle Bags
+                </p>
+                <p class="price">
+                    $120.00
+                </p>
+                <button class="view-button">View Details</button>
+            </div>
+        
+            <div class="product">
+                <img alt="Bike Cover - Waterproof All-Weather Cover" height="200" src="download (28).jpeg" width="200" />
+                <h3>
+                    Bike Cover
+                </h3>
+                <p>
+                    Waterproof All-Weather Bike Cover
+                </p>
+                <p class="price">
+                    $30.00
+                </p>
+                <button class="view-button">View Details</button>
+            </div>
+        
+            <div class="product">
+                <img alt="Chain Cleaner - Motul C1 Chain Cleaner" height="200" src="download (29).jpeg" width="200" />
+                <h3>
+                    Chain Cleaner
+                </h3>
+                <p>
+                    Motul C1 Chain Cleaner
+                </p>
+                <p class="price">
+                    $15.00
+                </p>
+                <button class="view-button">View Details</button>
+            </div>
+        
+            <div class="product">
+                <img alt="Brake Pads - EBC Organic Brake Pads" height="200" src="81uL4HKxEyL._AC_UF1000,1000_QL80_.jpg" width="200" />
+                <h3>
+                    Brake Pads
+                </h3>
+                <p>
+                    EBC Organic Brake Pads
+                </p>
+                <p class="price">
+                    $28.00
+                </p>
+                <button class="view-button">View Details</button>
+            </div>
+        
+            <div class="product">
+                <img alt="Handlebar Grips - Progrip Sportbike Grips" height="200" src="images (3).jpeg" width="200" />
+                <h3>
+                    Handlebar Grips
+                </h3>
+                <p>
+                    Progrip Sportbike Grips
+                </p>
+                <p class="price">
+                    $12.00
+                </p>
+                <button class="view-button">View Details</button>
+            </div>
+        
+            <div class="product">
+                <img alt="Bike Tires - Pirelli Sport Demon Tires" height="200" src="images (5).jpeg" width="200" />
+                <h3>
+                    Bike Tires
+                </h3>
+                <p>
+                    Pirelli Sport Demon Tires
+                </p>
+                <p class="price">
+                    $120.00
+                </p>
+                <button class="view-button">View Details</button>
+            </div>
+        
+            <!-- More products added below -->
+        
+            <div class="product">
+                <img alt="Exhaust - Akrapovic Full System Exhaust" height="200" src="download (31).jpeg" width="200" />
+                <h3>
+                    Exhaust
+                </h3>
+                <p>
+                    Akrapovic Full System Exhaust
+                </p>
+                <p class="price">
+                    $850.00
+                </p>
+                <button class="view-button">View Details</button>
+            </div>
+        
+            <div class="product">
+                <img alt="Seat - Gel Padded Comfort Seat" height="200" src="images (6).jpeg" width="200" />
+                <h3>
+                    Seat
+                </h3>
+                <p>
+                    Gel Padded Comfort Seat
+                </p>
+                <p class="price">
+                    $75.00
+                </p>
+                <button class="view-button">View Details</button>
+            </div>
+        
+            <div class="product">
+                <img alt="Handlebar - Adjustable Handlebar Risers" height="200" src="download (33).jpeg" width="200" />
+                <h3>
+                    Handlebar Risers
+                </h3>
+                <p>
+                    Adjustable Handlebar Risers
+                </p>
+                <p class="price">
+                    $60.00
+                </p>
+                <button class="view-button">View Details</button>
+            </div>
+        
+            <div class="product">
+                <img alt="Tank Pads - Anti-Slip Tank Pads" height="200" src="download (35).jpeg" width="200" />
+                <h3>
+                    Tank Pads
+                </h3>
+                <p>
+                    Anti-Slip Tank Pads
+                </p>
+                <p class="price">
+                    $20.00
+                </p>
+                <button class="view-button">View Details</button>
+            </div>
+        
+            <div class="product">
+                <img alt="Phone Mount - Waterproof Motorcycle Phone Mount" height="200" src="download (36).jpeg" width="200" />
+                <h3>
+                    Phone Mount
+                </h3>
+                <p>
+                    Waterproof Motorcycle Phone Mount
+                </p>
+                <p class="price">
+                    $35.00
+                </p>
+                <button class="view-button">View Details</button>
+            </div>
+        
+            <div class="product">
+                <img alt="Crash Guards - Heavy Duty Crash Bars" height="200" src="download (37).jpeg" width="200" />
+                <h3>
+                    Crash Guards
+                </h3>
+                <p>
+                    Heavy Duty Crash Bars
+                </p>
+                <p class="price">
+                    $100.00
+                </p>
+                <button class="view-button">View Details</button>
+            </div>
+        
+            <div class="product">
+                <img alt="Chain Lube - Motul Chain Lube Spray" height="200" src="download (38).jpeg" width="200" />
+                <h3>
+                    Chain Lube
+                </h3>
+                <p>
+                    Motul Chain Lube Spray
+                </p>
+                <p class="price">
+                    $10.00
+                </p>
+                <button class="view-button">View Details</button>
+            </div>
+        
+        </div>
+    </section>
+    <footer class="footer">
+        <p>
+            &copy; 2024 Brator. All Rights Reserved.
+        </p>
+    </footer>
+</body>
+</html>

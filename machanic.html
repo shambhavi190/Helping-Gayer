@@ -1,0 +1,427 @@
+<html></html>
+ <head>
+    <style>
+        body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color:  rgb(1,58,99);
+}
+.header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+.header .nav {
+    display: flex;
+    gap: 70px;
+    margin-right: 52px;
+}
+.header .nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+}
+.main-content {
+    text-align: center;
+    padding: 50px 20px;
+    background: url(assest/image/dark-black-background-design-with-stripes_1017-38064.avif) no-repeat center center/cover;
+    position: relative;
+  
+}
+.address{
+    text-align: left;
+    color: #cb9a9a;
+}
+.main-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.175);
+}
+.main-content .address {
+    position: relative;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.main-content .address i {
+    margin-right: 10px;
+}
+.main-content h1 {
+    position: relative;
+    font-size: 68px;
+    margin-bottom: 40px;
+}
+.main-content .services {
+    display: flex;
+    justify-content: center;
+    gap: 350px;
+    position: relative;
+}
+.main-content .service {
+    background: hsla(0, 0%, 100%, 0);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+.main-content .service img {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 10px;
+}
+.main-content .service p {
+    font-size: 24px;
+    font-weight: bold;
+}
+.footer {
+    height: 5px;
+    background-color: #fff;
+    margin-top: 50px;
+}
+
+
+.services-section {
+  
+    background-color: rgb(1,58,99);
+    color: #fff;
+}
+
+.services-header h2 {
+    text-align: center;
+    font-size: 24px;
+    background-color: #FFD700;
+    color: black;
+    padding: 15px;
+    font-weight: bold;
+}
+
+.services-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  
+    
+}
+
+.service-box {
+    background-color: hsla(0, 0%, 100%, 0.203);
+    color: black;
+    text-align: center;
+    height: 200px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+}
+
+.service-box img {
+    width: 200px;
+    height: auto;
+    margin-top: 13px;
+}
+
+.service-box p {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.service-box:hover {
+    transform: translateY(-10px);
+}
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+footer{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    color: white;
+    background-color:#1e567e;
+    margin: auto;
+}
+.foothead{
+    font-size: 56px;
+    font-style: var(--style);
+     font-weight: 700;
+     padding: 15px;
+     margin-left: 32px;
+}
+.address{
+    max-width: 30vw;
+    font-size:20px;
+    font-style: var(--style2);
+    font-weight: 400;
+    padding: 15px;
+     margin-left: 32px;
+}
+.footer2{
+    max-width: 30vw;
+    font-size:22px;
+    font-style: var(--style2);
+    font-weight: 500;
+    padding: 25px;
+   
+}
+.footer2 li{
+    list-style: none;
+    margin: 15px;
+}
+.footer2 li a{
+    text-decoration: none;
+    color: white;}
+.footer3{
+    max-width: 30vw;
+    font-size:22px;
+    font-style: var(--style2);
+    font-weight: 500;
+    padding: 25px;
+   
+}
+.footer3 li {
+    list-style: none;
+    margin: 15px;
+}
+.footer3 li a{
+    text-decoration: none;
+    color: white;
+}
+.list{
+    margin: 15px;
+
+}
+.social-icons {
+    display: flex;
+    margin-top: 15px;
+    margin-right: 15px;
+}
+
+.social-icons a {
+   margin-left: 54px;
+   margin-bottom: 12px;
+}
+
+.social-icons img {
+    width: 32px;
+    height: 32px;
+}
+@media (max-width:900px){
+    footer{
+        display: flex;
+        flex-direction: column;
+        justify-content:flex-start;
+        align-items: flex-start;
+    }
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+    font-family: "Lato", sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+
+}
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+
+    </style>
+  <title>
+   Automotive Care
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="mechanic.css">
+ </head>
+ <body>
+  <div class="header">
+    <div class="nav-links">
+        <div>
+            <a href="front.html">
+            AUTOMOTIVE <br>  CARE
+        </a>
+        </div>
+    </div>
+    
+   <div class="nav">
+    <a href="front.html">
+     Home
+    </a>
+    
+    <a href="About.html">
+     About
+    </a>
+    <a href="Mico Free Website Template - Free-CSS.com/mico-html/contact.html">
+     Contact
+    </a>
+   </div>
+  </div>
+  <div class="main-content">
+  
+   <h1>
+    Mechanic At Door
+   </h1>
+   <div class="services">
+    <div class="service">
+        <a href="machani2.html">
+            <img alt="machanic" height="100" src="assest3/image/16.png" width="100"/>
+        </a>
+    </div>
+    <div class="service">
+        <a href="Macanical.html">
+            <img alt="Urgent icon" height="100" src="assest3/image/17.png" width="100"/>
+        </a>
+    </div>
+</div>
+  </div>
+  <div class="footer">
+  </div>
+  <section class="services-section">
+    <div class="services-header">
+        <h2>Explore Our Services</h2>
+    </div>
+
+    <div class="services-container">
+      
+        
+        <div class="services-grid">
+           
+            <div class="service-box" id="ev-box">
+                <img src="download (1).jpeg" alt="EV">
+                <p>EV</p>
+
+            </div>
+            <div class="service-box"id="car">
+                <img src="images.jpeg" alt="Car Service">
+                <p>Car Service</p>
+            </div>
+            <div class="service-box"id="ac">
+                <img src="repairman-holding-monitor-tool-check-600nw-2279387293.webp" alt="Car AC Repair">
+                <p>Car AC Repair</p>
+            </div>
+            <div class="service-box"id="dent paint">
+                <img src="download (2).jpeg" alt="Dent Paint">
+                <p>Dent Paint</p>
+            </div>
+            <div class="service-box"id="Battery">
+                <img src="download (3).jpeg" alt="Car Battery">
+                <p>Car Battery</p>
+            </div>
+            <div class="service-box" id="amc">
+                <img src="download (8).jpeg" alt="AMC">
+                <p>AMC</p>
+            </div>
+            <div class="service-box"id="wheel">
+                <img src="download (5).jpeg" alt="Wheel Care">
+                <p>Wheel Care</p>
+            </div>
+            <div class="service-box"id="claim">
+                <img src="download (6).jpeg" alt="Insurance Claim">
+                <p>Insurance Claim</p>
+            </div>
+            <div class="service-box"id="repair">
+                <img src="download (7).jpeg" alt="Custom Repair">
+                <p>Custom Repair</p>
+            </div>
+        </div>
+    </div>
+</section>
+<footer>
+    <div class="footer1">
+        <div class="foothead">AUTOMOTIVE <br>
+            CARE </div>
+            <div class="address">Address: <br>
+
+                Microtek College of Management & Technology
+                
+                C-27/279, A-2, Lahurabir Rd, Maldahiya, Sidhgiribagh, Varanasi, Uttar
+                Pradesh 221001</div>
+            </p>
+            <div class="social-icons">
+                <a href="#"><img src="assest/image/face.png" alt="Facebook"></a>
+                <a href="#"><img src="assest/image/insta.png" alt="Instagram"></a>
+                <a href="#"><img src="assest/image/x.png" alt="Twitter"></a>
+                <a href="#"><img src="assest/image/you.png" alt="YouTube"></a>
+            </div>
+    </div>
+    <div class="footer2">
+        <ul class="list">About</ul>
+        <li><a href="#">Mission & Vision</a></li>
+
+    <li><a href="#"> Our Journey</li>
+            
+           <li><a href="#"> Our Team</li>
+            
+           <li><a href="#"> Achievements</a></li>
+    </div>
+    <div class="footer3">
+
+        <ul class="list">Resource</ul>
+        
+    <li><a href="#">Contact us</a></li>
+            
+           <li><a href="#">FAQS</a> </li>
+            
+            <li><a href="#"> Term and Condition</a></li>
+    </div>
+</footer>
+
+ </body>
+ <script>
+    document.getElementById("ev-box").addEventListener("click", function() {
+      window.location.href = "your-link-url"; 
+      
+    });
+    document.getElementById("car").addEventListener("click", function() {
+      window.location.href = "your-link-url"; 
+      
+    }); document.getElementById("ac").addEventListener("click", function() {
+      window.location.href = "your-link-url"; 
+      
+    }); document.getElementById("dent paint").addEventListener("click", function() {
+      window.location.href = "your-link-url"; 
+      
+    }); document.getElementById("Battery").addEventListener("click", function() {
+      window.location.href = "your-link-url"; 
+      
+    }); document.getElementById("amc").addEventListener("click", function() {
+      window.location.href = "your-link-url"; 
+      
+    }); document.getElementById("wheel").addEventListener("click", function() {
+      window.location.href = "your-link-url"; 
+      
+    });; document.getElementById("claim").addEventListener("click", function() {
+      window.location.href = "your-link-url"; 
+      
+    });; document.getElementById("repair").addEventListener("click", function() {
+      window.location.href = "your-link-url"; 
+      
+    });
+    
+  </script>
+</html>

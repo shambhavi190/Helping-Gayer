@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Rental bike Service</title>
+</head>
+<body>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ 
+.container {
+            background-color: hwb(0 0% 100% / 0.392);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 80%;
+            max-width: 800px;
+            position: relative;
+            border: 3px solid black;
+            margin-left: 273px;
+        }
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            background-color: black;
+            z-index: -1;
+        }
+        .tabs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-right: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .tab:last-child {
+            margin-right: 0;
+        }
+        .tab.active {
+            background-color: black;
+            color: white;
+        }
+        .tab.inactive {
+            background-color: #f2f3f4;
+            color: #070101;
+        }
+        .tab:hover {
+            background-color: #ddd;
+        }
+        .form-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .form-group div {
+            flex: 1;
+            margin-right: 10px;
+            position: relative;
+        }
+        .form-group div:last-child {
+            margin-right: 0;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus {
+            border-color: #ffcc00;
+        }
+        .form-group .icon {
+            position: absolute;
+            right: 10px;
+            top: 35px;
+            color: #ccc;
+            cursor: pointer;
+        }
+        .button-container {
+            text-align: center;
+        }
+        .button-container button {
+            background-color: #ffcc00;
+            color: black;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .button-container button:active {
+            transform: scale(0.95);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(1,58,99);
+    color: white;
+    padding: 20px;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.cta {
+  background-color:#ff6347; /* Green background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 6px 24px; /* Some padding */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* Make the link look like a button */
+  font-size: 16px; /* Increase font size */
+  
+  cursor: pointer; /* Mouse pointer on hover */
+  border-radius: 5px; /* Rounded corners */
+  transition-duration: 0.4s; /* Smooth transition */
+}
+
+/* Change background on hover */
+.cta:hover {
+  background-color: white; 
+  color: black;
+ 
+}
+
+
+.hero {
+    background: url('photo-1702292000625-0c8e209702fe.jpeg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 122px 20px;
+}
+
+.hero h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.search-bar {
+    margin-top: 20px;
+}
+
+.search-bar input {
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    padding: 10px 15px;
+    background: #ff6347;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.featured-cars,.h2 {
+    background-color: hwb(205 78% 4%);
+    padding: 50px 20px;
+    text-align: center;
+   
+  
+}
+.car-card {
+    display: inline-block;
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 29px;
+    width: 256px;
+    height: 250px;
+    vertical-align: top;
+    background-color: hsl(0, 0%, 100%);
+}
+
+.car-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.price {
+    font-weight: bold;
+}
+
+.how-it-works,.h2,.h3,.p {
+    background: hsl(205, 100%, 82%);
+    padding: 50px 20px;
+    text-align: center;
+    color: hsl(0, 0%, 0%);
+}
+
+.steps {
+    display: flex;
+    justify-content: space-around;
+}
+
+.step {
+    width: 20%;
+}
+
+.testimonials ,.h2,.p{
+    padding: 50px 20px;
+    text-align: center;
+    background: whitesmoke;
+    color: black;
+}
+
+.testimonial {
+    margin: 20px 0;
+}
+
+footer{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    color: white;
+    background-color:#1e567e;
+    margin: auto;
+}
+.foothead{
+    font-size: 56px;
+    font-style: var(--style);
+     font-weight: 700;
+     padding: 15px;
+     margin-left: 32px;
+}
+.address{
+    max-width: 30vw;
+    font-size:20px;
+    font-style: var(--style2);
+    font-weight: 400;
+    padding: 15px;
+     margin-left: 32px;
+}
+.footer2{
+    max-width: 30vw;
+    font-size:22px;
+    font-style: var(--style2);
+    font-weight: 500;
+    padding: 25px;
+   
+}
+.footer2 li{
+    list-style: none;
+    margin: 15px;
+}
+.footer2 li a{
+    text-decoration: none;
+    color: white;}
+.footer3{
+    max-width: 30vw;
+    font-size:22px;
+    font-style: var(--style2);
+    font-weight: 500;
+    padding: 25px;
+   
+}
+.footer3 li {
+    list-style: none;
+    margin: 15px;
+}
+.footer3 li a{
+    text-decoration: none;
+    color: white;
+}
+.list{
+    margin: 15px;
+
+}
+.social-icons {
+    display: flex;
+    margin-top: 15px;
+    margin-right: 15px;
+}
+
+.social-icons a {
+   margin-left: 54px;
+   margin-bottom: 12px;
+}
+
+.social-icons img {
+    width: 32px;
+    height: 32px;
+}
+@media (max-width:900px){
+    footer{
+        display: flex;
+        flex-direction: column;
+        justify-content:flex-start;
+        align-items: flex-start;
+    }
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+    font-family: "Lato", sans-serif;
+    font-weight: bold;
+    font-size: 28px;
+    color: #ddd;
+
+}
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+</style>
+    <header>
+        <div class="nav-links">
+
+            <a href="front.html" >
+            Rental Bikes</div>
+        </a>
+    </div>
+        <nav>
+            <ul>
+                <li><a href="front.html">Home</a></li>
+                <li><a href="About.html">About Us</a></li>
+                <li><a href="bike.html#ss">Services</a></li>
+                <li><a href="Mico Free Website Template - Free-CSS.com/mico-html/contact.html">Contact</a></li>
+              
+            </ul>
+        </nav>
+        <div>
+            <a href="car.html" class="cta">Rent a car</a>
+        </div>
+        
+    
+    </header>
+
+    <section class="hero">
+        <h1>Find Your Perfect Bikes</h1>
+        <p>Affordable Rates, Exceptional Service</p>
+    
+        <div class="search-bar">
+            <div class="container">
+                <div class="tabs">
+                    <div class="tab active" onclick="showSection('one-way')">ONE WAY</div>
+                    <div class="tab inactive" onclick="showSection('round-trip')">ROUND TRIP</div>
+                    <div class="tab inactive" onclick="showSection('local')">LOCAL</div>
+                    <div class="tab inactive" onclick="showSection('airport')">AIRPORT</div>
+                </div>
+                <div id="one-way" class="section active">
+                    <div class="form-group">
+                        <div>
+                          <label>FROM</label>
+    <input type="text"id="froLocation" placeholder="Start typing city - e.g. Mysore">
+    <i class="fas fa-exchange-alt icon"></i>
+    <button onclick="getCurrentLocation()">Use Current Location</button>
+                        </div>
+                        <div>
+                            <label>TO</label>
+                            <input type="text" placeholder="Start typing city - e.g. MGS">
+                        </div>
+                        <div>
+                            <label>PICK UP</label>
+                            <input type="date" id="one-way-pickup" value="" >
+                            
+                        </div>
+                        <div>
+                            <label>PICK UP AT</label>
+                            <input type="time" value="7:00 AM" >
+                          
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <button onclick="exploreCar()">EXPLORE BIKE</button>
+                    </div>
+                </div>
+                <div id="round-trip" class="section">
+                    <div class="form-group">
+                        <div>
+                            <label>FROM</label>
+                            <input type="text" id="fromLocation" placeholder="Start typing city - e.g. Mysore">
+                            <button onclick="getCurrentLocation()">Use Current Location</button>
+
+                        </div>
+                        <div>
+                            <label>TO</label>
+                            <input type="text" placeholder="Start typing city - e.g. Mysore">
+                        </div>
+                        <div>
+                            <label>DEPARTURE</label>
+                            <input type="date" id="round-trip-departure" placeholder="Select date">
+                           
+                        </div>
+                        <div>
+                            <label>RETURN</label>
+                            <input type="date" id="round-trip-return" placeholder="Select date">
+                         
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <button onclick="exploreCar()">EXPLORE BIKE</button>
+                    </div>
+                </div>
+                <div id="local" class="section">
+                    <div class="form-group">
+                        <div>
+                            <label>CITY</label>
+                            <input type="text"id="frmLocation" placeholder="Start typing city - e.g. Mysore">
+                            <button onclick="getCurrentLocation()">Use Current Location</button>
+                        </div>
+                        <div>
+                            <label>PICK UP</label>
+                            <input type="date" id="local-pickup" placeholder="Select date">
+                          
+                        </div>
+                        <div>
+                            <label>PICK UP AT</label>
+                            <input type="time" placeholder="Select time">
+                          
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <button onclick="exploreCar()">EXPLORE BIKE</button>
+                    </div>
+                </div>
+                <div id="airport" class="section">
+                    <div class="form-group">
+                        <div>
+                            <label>FROM</label>
+                            <input type="text" id="frmeLocation" placeholder="Start typing city - e.g. Mysore">
+                            <button onclick="getCurrentLocation()">Use Current Location</button>
+                        </div>
+                        <div>
+                            <label>TO</label>
+                            <input type="text" placeholder="Start typing city - e.g. Mysore">
+                        </div>
+                        <div>
+                            <label>PICK UP</label>
+                            <input type="date" id="airport-pickup" placeholder="Select date">
+                          
+                        </div>
+                        <div>
+                            <label>PICK UP AT</label>
+                            <input type="time" placeholder="Select time">
+                           
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <button onclick="exploreCar()">EXPLORE BIKE</button>
+                    </div>
+                </div>
+            </div>
+        
+    </section>
+
+    <section class="featured-cars">
+        <h2>Our Top Rentals</h2>
+        <div class="car-card">
+            <img src="SPLENDER-1200x675.webp" alt="Car 2">
+            <h3>alto </h3>
+            <p>4-seater, Manual, 25kmpl</p>
+            <p class="price">$18/day</p>
+            <button>Book Now</button>
+        </div>
+        <div class="car-card">
+            
+             <img src="duke-125-2024-right-side-view-4.gif" alt="Car 1">
+            <h3>Honda Civic</h3>
+            <p>4-seater,Automatic,15kmpl</p>
+            <p class="price">$30/day</p>
+            <button>Book Now</button>
+        </div>
+        <div class="car-card">
+            <img src="01.avif" alt="Car 3">
+            <h3>Kia Carnival</h3>
+            <p>5-seater, Automatic, 12 kmpl</p>
+            <p class="price">$50/day</p>
+            <button>Book Now</button>
+        </div>
+    </section>
+
+    <section class="how-it-works"id=ss>
+        <h2>Easy Booking Process</h2>
+        <div class="steps">
+            <div class="step">
+                <h3>Search for a Car</h3>
+                <p>Use our search tool to find available cars.</p>
+                <img src="1.png" alt="Search for a Car" style="width: 100%; border-radius: 10px; margin-top: 15px;">
+            </div>
+            <div class="step">
+                <h3>Choose Your Vehicle</h3>
+                <p>Select the car that fits your needs.</p>
+                <img src="2.png" alt="Search for a Car" style="width: 100%; border-radius: 10px; margin-top: 15px;">
+            </div>
+            <div class="step">
+                <h3>Complete Your Booking</h3>
+                <p>Fill in your details and confirm.</p>
+                <img src="3.png" alt="Search for a Car" style="width: 100%; border-radius: 10px; margin-top: 15px;">
+            </div>
+            <div class="step">
+                <h3>Pick Up Your Car</h3>
+                <p>Enjoy your ride!</p>
+                <img src="4.png" alt="Search for a Car" style="width: 100%; border-radius: 10px; margin-top: 15px;">
+            </div>
+        </div>
+    </section>
+
+    
+
+    <footer>
+        <div class="footer1">
+            <div class="foothead">AUTOMOTIVE <br>
+                CARE </div>
+                <div class="address">Address: <br>
+
+                    Microtek College of Management & Technology
+                    
+                    C-27/279, A-2, Lahurabir Rd, Maldahiya, Sidhgiribagh, Varanasi, Uttar
+                    Pradesh 221001</div>
+                </p>
+                <div class="social-icons">
+                    <a href="#"><img src="assest/image/face.png" alt="Facebook"></a>
+                    <a href="#"><img src="assest/image/insta.png" alt="Instagram"></a>
+                    <a href="#"><img src="assest/image/x.png" alt="Twitter"></a>
+                    <a href="#"><img src="assest/image/you.png" alt="YouTube"></a>
+                </div>
+        </div>
+        <div class="footer2">
+            <ul class="list">About</ul>
+            <li><a href="#">Mission & Vision</a></li>
+
+        <li><a href="#"> Our Journey</li>
+                
+               <li><a href="#"> Our Team</li>
+                
+               <li><a href="#"> Achievements</a></li>
+        </div>
+        <div class="footer3">
+
+            <ul class="list">Resource</ul>
+            
+        <li><a href="#">Contact us</a></li>
+                
+               <li><a href="#">FAQS</a> </li>
+                
+                <li><a href="#"> Term and Condition</a></li>
+        </div>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        function getCurrentLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+
+    function showPosition(position) {
+        let latitude = position.coords.latitude;
+        let longitude = position.coords.longitude;
+
+        // Using a reverse geocoding API to convert coordinates to a location
+        fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("fromLocation").value = data.city + ", " + data.principalSubdivision;
+            document.getElementById("froLocation").value = data.city + ", " + data.principalSubdivision;
+            document.getElementById("frmLocation").value = data.city + ", " + data.principalSubdivision;
+            document.getElementById("frmeLocation").value = data.city + ", " + data.principalSubdivision;
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    function showError(error) {
+        switch(error.code) {
+            case error.PERMISSION_DENIED:
+                alert("User denied the request for Geolocation.");
+                break;
+            case error.POSITION_UNAVAILABLE:
+                alert("Location information is unavailable.");
+                break;
+            case error.TIMEOUT:
+                alert("The request to get user location timed out.");
+                break;
+            case error.UNKNOWN_ERROR:
+                alert("An unknown error occurred.");
+                break;
+        }
+    }
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+                tab.classList.add('inactive');
+            });
+            event.target.classList.add('active');
+            event.target.classList.remove('inactive');
+        }
+
+        function animateButton(button) {
+            button.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                button.style.transform = 'scale(1)';
+            }, 200);
+        }
+
+        function showDatePicker(inputId) {
+            $("#" + inputId).datepicker({
+                dateFormat: "dd-mm-yy"
+            }).datepicker("show");
+        }
+        
+        function exploreCar() {
+        window.location.href = "RENTAL BIKE .HTML"; 
+    }
+    </script>
+
+
+</body>
+</html>

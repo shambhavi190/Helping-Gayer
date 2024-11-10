@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Mechanic for Routine Services</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: hsl(206, 20%, 54%);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color:hsl(206, 20%, 54%);
+            color: rgb(255, 255, 255);
+            padding: 20px;
+            text-align: center;
+            font-size: 17px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: hwb(0 94% 6%);
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: hsl(0, 0%, 100%);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+        input, select, textarea {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+        .address-section {
+            margin-top: 20px;
+        }
+        .current-location {
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .current-location:hover {
+            background-color: #0056b3;
+        }
+        .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: rgb(1,58,99);
+    color: white;
+    
+    margin: auto;
+}
+
+.site-name {
+    font-family:ROBOTO (HEADING);
+    font-weight: bolder;
+    display: flex;
+    flex-direction: column;
+    font-size:23PX;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    font-family: "Lato", sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+
+}
+
+.nav-links li {
+    margin: 0 1.5rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff6347; /* Change color on hover */
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    height: 3px;
+    width: 25px;
+    background-color: white;
+    margin: 3px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide links initially */
+        flex-direction: column;
+        position: absolute;
+        background-color: black;
+        top: 60px; /* Position below the navbar */
+        right: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex; /* Show links when active */
+    }
+
+    .hamburger {
+        display: flex; /* Show hamburger icon */
+    }
+
+    .site-name {
+        font-size: 24px; /* Adjust font size for smaller screens */
+    }
+}
+    </style>
+    <script>
+        const GOOGLE_API_KEY = 'YOUR_GOOGLE_API_KEY';
+
+        // Function to get current location
+        function captureLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        // Function to display captured location and reverse geocode
+        function showPosition(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            document.getElementById("latitude").value = latitude;
+            document.getElementById("longitude").value = longitude;
+
+            reverseGeocode(latitude, longitude);
+        }
+
+        // Reverse Geocoding to get the address from latitude and longitude
+        function reverseGeocode(lat, lng) {
+            const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${GOOGLE_API_KEY}`;
+            
+            fetch(geocodeUrl)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === "OK") {
+                        const addressComponents = data.results[0].address_components;
+                        let street = '', city = '', zip = '';
+
+                        addressComponents.forEach(component => {
+                            if (component.types.includes('street_number') || component.types.includes('route')) {
+                                street += component.long_name + ' ';
+                            }
+                            if (component.types.includes('locality')) {
+                                city = component.long_name;
+                            }
+                            if (component.types.includes('postal_code')) {
+                                zip = component.long_name;
+                            }
+                        });
+
+                        // Fill address fields
+                        document.getElementById("address").value = street.trim();
+                        document.getElementById("city").value = city;
+                        document.getElementById("zip").value = zip;
+
+                        alert("Address captured successfully!");
+                    } else {
+                        alert("Failed to retrieve address.");
+                    }
+                })
+                .catch(error => {
+                    alert("Error fetching address: " + error);
+                });
+        }
+
+        // Function to handle errors during location capture
+        function showError(error) {
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    alert("User denied the request for Geolocation.");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert("Location information is unavailable.");
+                    break;
+                case error.TIMEOUT:
+                    alert("The request to get user location timed out.");
+                    break;
+                case error.UNKNOWN_ERROR:
+                    alert("An unknown error occurred.");
+                    break;
+            }
+        }
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-links">
+            <div>
+                <a href="front.html">
+                AUTOMOTIVE <br>  CARE
+            </a>
+            </div>
+        </div>
+        <ul class="nav-links">
+        <ul class="nav-links">
+            
+           
+            <li><a href="About.html">About</a></li>
+            <li><a href="Mico Free Website Template - Free-CSS.com/mico-html/contact.html">Contact</a></li>
+            <li><a href="login.html">login</a></li>
+        </ul>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+<header>
+    <h1>Book a Mechanic for Routine Service</h1>
+</header>
+
+<div class="container">
+    <form action="/book-mechanic" method="POST">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+        <!-- Address Section (Moved after Phone Number) -->
+        <div class="address-section">
+            <h2>Address Details</h2>
+            
+            <label for="address">Street Address</label>
+            <input type="text" id="address" name="address" placeholder="Enter your address" required>
+
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" placeholder="Enter your city" required>
+
+            <label for="zip">Zip Code</label>
+            <input type="text" id="zip" name="zip" placeholder="Enter your zip code" required>
+
+            <!-- Button to Capture Current Location -->
+            <button type="button" class="current-location" onclick="captureLocation()">Use Current Location</button>
+
+            <!-- Hidden fields to store latitude and longitude -->
+            <input type="hidden" id="latitude" name="latitude">
+            <input type="hidden" id="longitude" name="longitude">
+        </div>
+
+        <label for="vehicle-type">Vehicle Type</label>
+        <select id="vehicle-type" name="vehicle-type" required>
+            <option value="">Select vehicle type</option>
+            <option value="car">Car</option>
+            <option value="bike">Bike</option>
+            <option value="scooter">Scooter</option>
+        </select>
+
+        <label for="service-type">Service Type</label>
+        <select id="service-type" name="service-type" required>
+            <option value="">Select service type</option>
+            <option value="oil-change">Oil Change</option>
+            <option value="tire-replacement">Tire Replacement</option>
+            <option value="engine-check">Engine Check</option>
+            <option value="full-service">Full Service</option>
+        </select>
+
+        <label for="date">Preferred Service Date</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="comments">Additional Comments</label>
+        <textarea id="comments" name="comments" rows="4" placeholder="Enter any additional details"></textarea>
+
+        <input type="submit" value="Book Now">
+    </form>
+</div>
+
+</body>
+</html>

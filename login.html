@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e1f5fe;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+
+        form h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 14px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input:focus {
+            border-color: #007bff;
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .password-container input {
+            width: calc(100% - 0px);
+        }
+
+        .eye-icon {
+            position: absolute;
+            size: 45px;
+            right: 10px;
+            top: 10px;
+            cursor: pointer;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Sign Up Button */
+        .signup-container {
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .signup-container a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .signup-container a:hover {
+            text-decoration: underline;
+        }
+
+        #error-message {
+            color: red;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .emoji {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            visibility: hidden;
+        }
+        
+
+.site-name {
+    font-family:ROBOTO (HEADING);
+    font-weight: bolder;
+    display: flex;
+    flex-direction: column;
+    font-size:23PX;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    font-family: "Lato", sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+
+}
+
+.nav-links li {
+    margin: 0 1.5rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff6347; /* Change color on hover */
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    height: 3px;
+    width: 25px;
+    background-color: white;
+    margin: 3px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide links initially */
+        flex-direction: column;
+        position: absolute;
+        background-color: black;
+        top: 60px; /* Position below the navbar */
+        right: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex; /* Show links when active */
+    }
+
+    .hamburger {
+        display: flex; /* Show hamburger icon */
+    }
+
+    .site-name {
+        font-size: 24px; /* Adjust font size for smaller screens */
+    }
+}
+    </style>
+</head>
+<nav class="navbar">
+  
+<body>
+   
+
+    <div class="login-container" id="login-form-container">
+        <form id="loginForm" onsubmit="return validateLoginForm()">
+            <h2>Login</h2>
+
+            <div id="login-emoji" class="emoji">😐</div>
+
+            <label for="login-username">Username:</label>
+            <input type="text" id="login-username" name="login-username" placeholder="Enter username" oninput="checkLoginUsername()">
+
+            <label for="login-password">Password:</label>
+            <div class="password-container">
+                <input type="password" id="login-password" name="login-password" placeholder="Enter password" oninput="checkLoginPassword()">
+                <span class="eye-icon" onclick="toggleLoginPasswordVisibility()">👁</span>
+            </div>
+
+            <button type="submit">Login</button>
+
+            <p id="login-error-message"></p>
+
+            <!-- Signup Link inside login container -->
+            <div class="signup-container">
+                <p>Don't have an account?</p>
+                <a href="sing up.html">Sign Up</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Emoji Feedback for Login
+        const loginEmoji = document.getElementById('login-emoji');
+        const loginFormContainer = document.getElementById('login-form-container');
+
+        // Toggle Password Visibility for Login
+        function toggleLoginPasswordVisibility() {
+            const passwordField = document.getElementById('login-password');
+            const icon = document.querySelector('.eye-icon');
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                icon.innerText = "🙈";
+            } else {
+                passwordField.type = "password";
+                icon.innerText = "🧐";
+            }
+        }
+
+        // Check Username for Login and Emoji Response
+        function checkLoginUsername() {
+            const username = document.getElementById('login-username').value;
+            if (username.length > 3) {
+                loginEmoji.style.visibility = "visible";
+                loginEmoji.innerText = "";
+                loginFormContainer.style.backgroundColor = "#e8f5e9"; // Green background for valid input
+            } else {
+                
+                loginFormContainer.style.backgroundColor = "#fff"; // Default background
+            }
+        }
+
+        // Check Password for Login and Emoji Response
+        function checkLoginPassword() {
+            const password = document.getElementById('login-password').value;
+            if (password.length > 5) {
+              
+                loginFormContainer.style.backgroundColor = "#c8e6c9"; // Light green background for strong password
+            } else if (password.length > 0) {
+               
+                loginFormContainer.style.backgroundColor = "#fff59d"; // Yellow background for short password
+            } else {
+               ;
+                loginFormContainer.style.backgroundColor = "#fff"; // Default background
+            }
+        }
+
+        // Validate Login Form
+        function validateLoginForm() {
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('login-password').value;
+            const errorMessage = document.getElementById('login-error-message');
+
+            if (username === "") {
+                errorMessage.innerText = "Username is required";
+                return false;
+            }
+
+            if (password === "") {
+                errorMessage.innerText = "Password is required";
+                return false;
+            }
+
+            // Clear error message on successful login
+            errorMessage.innerText = "";
+            alert("Login successful!");
+            return true;
+        }
+    </script>
+</body>
+</html>
